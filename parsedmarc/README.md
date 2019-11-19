@@ -9,9 +9,13 @@ Available from Grafana.com: [DMARC Reports](https://grafana.com/grafana/dashboar
 
 ![DMARC Report Details](./grafana-dmarc-reports03.png)
 
+## Datasource Setup
 Two data sources to be updates, one for Aggregate reports and one for Forensic reports.
+
+### Aggregate data source setup
 ![Aggregate data source setup](./grafana-dmarc-reports04.png)
 
+### Forensic data source setup
 ![Forensic data source setup](./grafana-dmarc-reports05.png)
 
 Requires Worldmap and Piechart plugins for all panels to display.
