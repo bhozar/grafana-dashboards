@@ -756,7 +756,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SPF Passage Over Time",
+      "title": "SPF Alignment Over Time",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -901,7 +901,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "DKIM Passage Over Time",
+      "title": "DKIM Alignment Over Time",
       "tooltip": {
         "shared": true,
         "sort": 2,
