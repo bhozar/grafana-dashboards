@@ -1,0 +1,5519 @@
+{
+  "__inputs": [],
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "bargauge",
+      "name": "Bar Gauge",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "version": "1.0.0"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "6.5.0-beta1"
+    },
+    {
+      "type": "panel",
+      "id": "grafana-piechart-panel",
+      "name": "Pie Chart",
+      "version": "1.3.9"
+    },
+    {
+      "type": "panel",
+      "id": "grafana-worldmap-panel",
+      "name": "Worldmap Panel",
+      "version": "0.2.1"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "savantly-heatmap-panel",
+      "name": "Heatmap",
+      "version": "0.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1574286084218,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 237,
+      "panels": [],
+      "title": "Overview",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 7,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "70%",
+      "prefix": "Activity Count<br>🧮",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "0,10",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "aliasColors": {
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Administrative Activity Overview",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 53,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Actions",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Administrative",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Activity Level",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "per 30 minutes",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 3
+      },
+      "id": 206,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Resources",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "max"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 3
+      },
+      "id": 214,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Users",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {
+                "precision_threshold": null
+              },
+              "type": "cardinality"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "max"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 3
+      },
+      "id": 208,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Resource Groups",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_group.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "max"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 3
+      },
+      "id": 209,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Subscriptions",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.subscription.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "max"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasource",
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 211,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 500,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ],
+            "title": "",
+            "unit": "locale"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "20m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top Active Users",
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {
+        "Failure": "light-red",
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Authorization Activity",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 220,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Success",
+          "color": "#56A64B"
+        },
+        {
+          "alias": "Failure",
+          "color": "#E02F44"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "id": "3",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Success",
+                    "query": "resultType:Success"
+                  },
+                  {
+                    "label": "Failure",
+                    "query": "resultType:Fail"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND operationName:*LISTKEYS*",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Access Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "chartId": "chart_254",
+      "colors": [
+        "rgba(50, 172, 45, 1)",
+        "rgba(241, 255, 0, 1)",
+        "rgba(245, 54, 54, 1)"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 254,
+      "legend": {
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": true
+      },
+      "mappingType": 1,
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "options": {},
+      "seriesOverrides": [],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.provider.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "azure.resource_group.keyword",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "0,100",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Activity Heatmap",
+      "treeMap": {
+        "aggregationFunction": "sum",
+        "colorByFunction": "max",
+        "debug": false,
+        "depth": "5",
+        "enableGrouping": true,
+        "enableTimeBlocks": false,
+        "groups": [
+          {
+            "key": "Provider",
+            "value": "/^Microsoft.* /"
+          }
+        ],
+        "ids": [
+          "alias"
+        ],
+        "mode": "squarify",
+        "nodeSizeProperty": "value",
+        "showLegend": true,
+        "sizeByFunction": "total"
+      },
+      "type": "savantly-heatmap-panel",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ]
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasource",
+      "description": "Activity by Resource Group",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 70,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "defaults": {
+            "mappings": [
+              {
+                "id": 0,
+                "op": "=",
+                "text": "N/A",
+                "type": 1,
+                "value": "null"
+              }
+            ],
+            "max": 1000,
+            "min": 0,
+            "nullValueMode": "connected",
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ],
+            "unit": "none"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_group.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top Resource Groups",
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Resource Creations and Deletions",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "hiddenSeries": false,
+      "id": 225,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "total",
+        "sortDesc": true,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Deletions/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_type.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": null,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "id": "5",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Creations",
+                    "query": "identity.authorization.action:*write"
+                  },
+                  {
+                    "label": "Deletions",
+                    "query": "identity.authorization.action:*delete"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "20m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Resource Changes",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "locale",
+          "label": "Deletions/Creations",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasource",
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "id": 205,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 500,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ],
+            "title": "",
+            "unit": "locale"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_type.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "20m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top 20 Resource Change Type",
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "hiddenSeries": false,
+      "id": 256,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {}
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_name.keyword",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "0",
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "activity_log_Autoscale_properties.eventProperties.NewInstancesCount",
+              "id": "1",
+              "meta": {},
+              "pipelineAgg": "select metric",
+              "settings": {
+                "missing": 0
+              },
+              "type": "cardinality"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.provider.keyword:MICROSOFT.WEB",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Autoscale Instance Count",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "locale",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "hiddenSeries": false,
+      "id": 213,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_name.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "activity_log_Autoscale_properties.eventProperties.ActiveAutoscaleProfile.Rules.ScaleAction.Direction.keyword",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "activity_log_Autoscale_properties.eventProperties.ActiveAutoscaleProfile.Rules.MetricTrigger.Name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "5m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.category.keyword:Autoscale",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Autoscale Actions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "Packets",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 234,
+      "options": {},
+      "pageSize": 100,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Provider",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "azure.provider.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Description",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "resultDescription.keyword",
+          "preserveFormat": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Type",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "resultType.keyword",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceGroup",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_group.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "DateTime",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "@timestamp",
+          "thresholds": [],
+          "type": "date",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceName",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_name.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "NewInstanceCount",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "activity_log_Autoscale_properties.eventProperties.NewInstancesCount",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "7",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            },
+            {
+              "fake": true,
+              "field": "azure.provider.keyword",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "-",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "azure.resource_group.keyword",
+              "id": "11",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "-",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "azure.resource_name.keyword",
+              "id": "12",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "-",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "resultDescription.keyword",
+              "id": "13",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "-",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "resultType.keyword",
+              "id": "10",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "-",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "durationMs",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Activity Log Viewer",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "columns": [
+        {
+          "text": "@timestamp",
+          "value": "@timestamp"
+        },
+        {
+          "text": "azure_subscription_name",
+          "value": "azure_subscription_name"
+        },
+        {
+          "text": "azure.resource_group",
+          "value": "azure.resource_group"
+        },
+        {
+          "text": "azure.resource_name",
+          "value": "azure.resource_name"
+        },
+        {
+          "text": "azure.resource_type",
+          "value": "azure.resource_type"
+        },
+        {
+          "text": "activity_log_Administrative_properties.statusCode",
+          "value": "activity_log_Administrative_properties.statusCode"
+        },
+        {
+          "text": "activity_log_Administrative_properties.statusMessage",
+          "value": "activity_log_Administrative_properties.statusMessage"
+        }
+      ],
+      "datasource": "$datasource",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
+      "id": 222,
+      "options": {},
+      "pageSize": 100,
+      "showHeader": true,
+      "sort": {
+        "col": 6,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status Message",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "activity_log_Administrative_properties.statusMessage",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Result",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "resultType",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "StatusCode",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "activity_log_Administrative_properties.statusCode",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceName",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_name",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceGroup",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_group",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceType",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_type",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "@timestamp",
+          "thresholds": [],
+          "type": "date",
+          "unit": "short"
+        },
+        {
+          "alias": "Subscription",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure_subscription_name",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {
+                "size": 5000
+              },
+              "type": "raw_document"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND level:/error|critical|warning/ AND _exists_:activity_log_Administrative_properties.statusMessage",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Failed Activities",
+      "transform": "json",
+      "type": "table"
+    },
+    {
+      "aliasColors": {
+        "Failure": "light-red",
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 59
+      },
+      "hiddenSeries": false,
+      "id": 226,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Activated",
+          "color": "#C4162A",
+          "dashes": true
+        },
+        {
+          "alias": "Resolved",
+          "color": "#56A64B",
+          "dashLength": 3,
+          "dashes": true
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "id": "3",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Activated",
+                    "query": "resultType:Active"
+                  },
+                  {
+                    "label": "Resolved",
+                    "query": "resultType:Resolved"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:ServiceHealth",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Service Health",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "locale",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Failure": "light-red",
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 59
+      },
+      "hiddenSeries": false,
+      "id": 239,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Activated",
+          "color": "#C4162A",
+          "dashes": true
+        },
+        {
+          "alias": "Resolved or Succeeded",
+          "color": "#56A64B",
+          "dashLength": 3,
+          "dashes": true
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "id": "3",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Activated",
+                    "query": "resultType:Active"
+                  },
+                  {
+                    "label": "Resolved or Succeeded",
+                    "query": "resultType:Resolved OR resultType:Succeeded"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Alerts",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "locale",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 63
+      },
+      "id": 227,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Activated - Health Incidents",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:ServiceHealth AND resultType:Active",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 6,
+        "y": 63
+      },
+      "id": 229,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Resolved - Health Incidents",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:ServiceHealth AND resultType:Resolved",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 63
+      },
+      "id": 246,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Activated - Alerts",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert AND resultType:Activated",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 16,
+        "y": 63
+      },
+      "id": 247,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Resolved - Alerts",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert AND resultType:Resolved",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 63
+      },
+      "id": 228,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Succeded - Alerts",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert AND resultType:Succeeded",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "columns": [
+        {
+          "text": "azure.category",
+          "value": "azure.category"
+        },
+        {
+          "text": "activity_log_ServiceHealth_properties.eventProperties.defaultLanguageTitle",
+          "value": "activity_log_ServiceHealth_properties.eventProperties.defaultLanguageTitle"
+        },
+        {
+          "text": "resultType",
+          "value": "resultType"
+        },
+        {
+          "text": "activity_log_ServiceHealth_properties.eventProperties.defaultLanguageContent",
+          "value": "activity_log_ServiceHealth_properties.eventProperties.defaultLanguageContent"
+        },
+        {
+          "text": "activity_log_ServiceHealth_properties.eventProperties.trackingId",
+          "value": "activity_log_ServiceHealth_properties.eventProperties.trackingId"
+        }
+      ],
+      "datasource": "$datasource",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 65
+      },
+      "id": 233,
+      "options": {},
+      "pageSize": 100,
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "DateTime",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "@timestamp",
+          "thresholds": [],
+          "type": "date",
+          "unit": "short"
+        },
+        {
+          "alias": "TrackingId",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTooltip": "Azure Portal Tracking ID: ${__cell}",
+          "linkUrl": "https://app.azure.com/h/${__cell}",
+          "mappingType": 1,
+          "pattern": "activity_log_ServiceHealth_properties.eventProperties.trackingId",
+          "preserveFormat": false,
+          "sanitize": true,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Content",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "activity_log_ServiceHealth_properties.eventProperties.defaultLanguageContent",
+          "preserveFormat": true,
+          "sanitize": true,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Status",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "resultType",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "ImpactedServices",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "activity_log_ServiceHealth_properties.eventProperties.impactedServicesTableRows",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Title",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "activity_log_ServiceHealth_properties.eventProperties.defaultLanguageTitle",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Category",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.category",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "7",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            },
+            {
+              "fake": true,
+              "field": "azure.category.keyword",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "resultType.keyword",
+              "id": "11",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "resultDescription.keyword",
+              "id": "10",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            }
+          ],
+          "hide": true,
+          "metrics": [
+            {
+              "field": "durationMs",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:ServiceHealth",
+          "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "bucketAggs": [],
+          "metrics": [
+            {
+              "field": "durationMs",
+              "id": "6",
+              "meta": {},
+              "settings": {
+                "size": 500
+              },
+              "type": "raw_document"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:ServiceHealth",
+          "refId": "B",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service Health Viewer",
+      "transform": "json",
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 82
+      },
+      "id": 78,
+      "panels": [],
+      "title": "Users",
+      "type": "row"
+    },
+    {
+      "aliasColors": {
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 83
+      },
+      "hiddenSeries": false,
+      "id": 224,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Actions",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Administrative AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "User Activity",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "per 30 minutes",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Resource Creations and Deletions",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 83
+      },
+      "hiddenSeries": false,
+      "id": 241,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "total",
+        "sortDesc": true,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Deletions/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_type.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": null,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "id": "5",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Creations",
+                    "query": "identity.authorization.action:*write"
+                  },
+                  {
+                    "label": "Deletions",
+                    "query": "identity.authorization.action:*delete"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Resource Changes",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "locale",
+          "label": "Deletions/Creations",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Failure": "light-red",
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Authorization Activity",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 87
+      },
+      "hiddenSeries": false,
+      "id": 240,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Success",
+          "color": "#56A64B"
+        },
+        {
+          "alias": "Failure",
+          "color": "#E02F44"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "id": "3",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Success",
+                    "query": "resultType:Success"
+                  },
+                  {
+                    "label": "Failure",
+                    "query": "resultType:Fail"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND operationName:*LISTKEYS* AND azure.category:Administrative AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Access Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 91
+      },
+      "id": 223,
+      "options": {},
+      "pageSize": 100,
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "CallerIP",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "callerIpAddress.keyword",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "First Name",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Email",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Surname",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname.keyword",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "IPs",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Unique Count",
+          "thresholds": [
+            "3",
+            "4"
+          ],
+          "type": "number",
+          "unit": "locale"
+        },
+        {
+          "alias": "Count",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname.keyword",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name.keyword",
+              "id": "7",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "callerIpAddress.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            },
+            {
+              "field": "select field",
+              "id": "6",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log",
+          "refId": "B",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Users",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "circleMaxSize": "30",
+      "circleMinSize": "3",
+      "colors": [
+        "rgba(0, 247, 0, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(240, 4, 45, 0.97)"
+      ],
+      "datasource": "$datasource",
+      "decimals": 0,
+      "esGeoPoint": "geoip.location",
+      "esLocationName": "geoip.city_name.keyword",
+      "esMetric": "Count",
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 97
+      },
+      "height": "600px",
+      "hideEmpty": true,
+      "hideZero": true,
+      "id": 51,
+      "initialZoom": "2",
+      "links": [],
+      "locationData": "table",
+      "mapCenter": "(0°, 0°)",
+      "mapCenterLatitude": 0,
+      "mapCenterLongitude": 0,
+      "maxDataPoints": 1,
+      "mouseWheelZoom": true,
+      "options": {},
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "geoip.city_name.keyword",
+        "latitudeField": "geoip.latitude",
+        "longitudeField": "geoip.longitude",
+        "metricField": "Count",
+        "queryType": "coordinates"
+      },
+      "targets": [
+        {
+          "alias": "count",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "geoip.latitude",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "geoip.longitude",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "geoip.city_name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1000,10000",
+      "title": "Geo Activity",
+      "transparent": true,
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "",
+      "unitSingle": "",
+      "valueName": "total"
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 103
+      },
+      "id": 212,
+      "options": {},
+      "pageSize": 100,
+      "showHeader": true,
+      "sort": {
+        "col": 3,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "CallerIP",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "callerIpAddress.keyword",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Country",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "geoip.country_name.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Email",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [],
+          "hide": true,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {
+                "size": 1000
+              },
+              "type": "raw_document"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "callerIpAddress.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "1000"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "geoip.country_name.keyword",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "100"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "identity.claims.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND _exists_:identity.claims.name",
+          "refId": "B",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Caller IP",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": ""
+      },
+      "datasource": "$datasource",
+      "decimals": null,
+      "fontSize": "100%",
+      "format": "locale",
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 111
+      },
+      "id": 230,
+      "interval": null,
+      "legend": {
+        "header": "",
+        "percentage": false,
+        "show": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "options": {},
+      "pieType": "donut",
+      "pluginVersion": "6.4.3",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_type.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_type.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Resource Type Breakdown",
+      "type": "grafana-piechart-panel",
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasource",
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 116
+      },
+      "id": 73,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 5000,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ],
+            "unit": "locale"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "callerIpAddress.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure_subscription_name.keyword:$subscriptionname",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top Caller IP",
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasource",
+      "description": "Activity by Resource Group User",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 118
+      },
+      "id": 242,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "defaults": {
+            "mappings": [
+              {
+                "id": 0,
+                "op": "=",
+                "text": "N/A",
+                "type": 1,
+                "value": "null"
+              }
+            ],
+            "max": 1000,
+            "min": 0,
+            "nullValueMode": "connected",
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ],
+            "unit": "none"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.resource_group.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "30m",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND _exists_:identity.claims.name",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top Resource Groups by User",
+      "type": "bargauge"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 129
+      },
+      "id": 244,
+      "panels": [],
+      "title": "Alerts",
+      "type": "row"
+    },
+    {
+      "aliasColors": {
+        "Failure": "light-red",
+        "Inbound Bytes": "semi-dark-green",
+        "Outbound Bytes": "semi-dark-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 130
+      },
+      "hiddenSeries": false,
+      "id": 245,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": false,
+        "sort": "total",
+        "sortDesc": false,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Activated",
+          "color": "#C4162A",
+          "dashes": true
+        },
+        {
+          "alias": "Resolved or Succeeded",
+          "color": "#56A64B",
+          "dashLength": 3,
+          "dashes": true
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "fake": true,
+              "id": "3",
+              "query": "*",
+              "settings": {
+                "filters": [
+                  {
+                    "label": "Activated",
+                    "query": "resultType:Active"
+                  },
+                  {
+                    "label": "Resolved or Succeeded",
+                    "query": "resultType:Resolved OR resultType:Succeeded"
+                  }
+                ]
+              },
+              "type": "filters"
+            },
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Alerts",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "locale",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "chartId": "chart_255",
+      "colors": [
+        "rgba(50, 172, 45, 1)",
+        "rgba(241, 255, 0, 1)",
+        "rgba(245, 54, 54, 1)"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 130
+      },
+      "id": 255,
+      "legend": {
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": true
+      },
+      "mappingType": 1,
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "options": {},
+      "seriesOverrides": [],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "azure.provider.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "azure.resource_group.keyword",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "0,100",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alert Heatmap",
+      "treeMap": {
+        "aggregationFunction": "sum",
+        "colorByFunction": "max",
+        "debug": false,
+        "depth": "5",
+        "enableGrouping": true,
+        "enableTimeBlocks": false,
+        "groups": [
+          {
+            "key": "Provider",
+            "value": "/^Microsoft.* /"
+          }
+        ],
+        "ids": [
+          "alias"
+        ],
+        "mode": "squarify",
+        "nodeSizeProperty": "value",
+        "showLegend": true,
+        "sizeByFunction": "total"
+      },
+      "type": "savantly-heatmap-panel",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ]
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 0,
+        "y": 134
+      },
+      "id": 217,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Activated - Alerts",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert AND resultType:Activated",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 4,
+        "y": 134
+      },
+      "id": 218,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Resolved - Alerts",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert AND resultType:Resolved",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 8,
+        "y": 134
+      },
+      "id": 248,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "<br>Succeded - Alerts",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "1y",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "azure.resource_name.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert AND resultType:Succeeded",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "1,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 144
+      },
+      "id": 235,
+      "options": {},
+      "pageSize": 100,
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Provider",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "azure.provider.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Description",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "resultDescription.keyword",
+          "preserveFormat": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Type",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "resultType.keyword",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceGroup",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_group.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "DateTime",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "@timestamp",
+          "thresholds": [],
+          "type": "date",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "ResourceName",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "azure.resource_name.keyword",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "@timestamp",
+              "id": "7",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            },
+            {
+              "fake": true,
+              "field": "azure.provider.keyword",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "azure.resource_group.keyword",
+              "id": "11",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "azure.resource_name.keyword",
+              "id": "12",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "resultDescription.keyword",
+              "id": "13",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "resultType.keyword",
+              "id": "10",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "30"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "durationMs",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "azure_subscription_name.keyword:$subscriptionname AND azure.group:activity_log AND azure.category:Alert",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alerts Viewer",
+      "transform": "table",
+      "type": "table"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 21,
+  "style": "dark",
+  "tags": [
+    "Azure",
+    "Security",
+    "Activity"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "Elasticsearch-azure-ops-log",
+          "value": "Elasticsearch-azure-ops-log"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "elasticsearch",
+        "refresh": 1,
+        "regex": "/.*azure-ops-log.*/",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"azure_subscription_name.keyword\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Subscription Name",
+        "multi": true,
+        "name": "subscriptionname",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"azure_subscription_name.keyword\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"azure.subscription.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Subscription",
+        "multi": true,
+        "name": "subscription",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"azure.subscription.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"level.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Severity",
+        "multi": true,
+        "name": "severity",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"level.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"azure.provider.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Provider",
+        "multi": true,
+        "name": "azureprovider",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"azure.provider.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"azure.resource_group.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\",\"query\":\"azure.provider.keyword:$azureprovider\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Resource Group",
+        "multi": true,
+        "name": "azureresourcegroup",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"azure.resource_group.keyword\",\"query\":\"azure_subscription_name.keyword:$subscriptionname\",\"query\":\"azure.provider.keyword:$azureprovider\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"azure.resource_name.keyword\",\"query\":\"azure.resource_group.keyword:$azureresourcegroup\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Resource",
+        "multi": true,
+        "name": "azureresource",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"azure.resource_name.keyword\",\"query\":\"azure.resource_group.keyword:$azureresourcegroup\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 5,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        "definition": "{\"find\":\"terms\",\"field\":\"identity.claims.name.keyword\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "User",
+        "multi": true,
+        "name": "azureuser",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"identity.claims.name.keyword\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "datasource": "$datasource",
+        "filters": [],
+        "hide": 0,
+        "label": "",
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Azure Activity Log",
+  "uid": "xGaVRp0Wz",
+  "version": 87
+}
