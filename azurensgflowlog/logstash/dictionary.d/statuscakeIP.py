@@ -1,4 +1,3 @@
-# src. https://github.com/TravisFSmith/MyBroElk
 ()#!/usr/bin/env python
 
 import urllib2, re
