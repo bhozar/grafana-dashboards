@@ -1,0 +1,49 @@
+#------------------------------------------------------------------------------
+# Service name overrides for the IANA standard ones
+# Services used within a private network
+#------------------------------------------------------------------------------
+
+# Other services
+"3310": clamavd
+
+# Prometheus core components starting at 9090
+"9090": prom-server
+
+# Prometheus exporters starting at 9100
+"8080": prom-haproxy
+"9100": prom-node
+#"9101": prom-haproxy
+"9108": prom-elasticsearch
+#"9108": prom-graphite-metrics
+#"9109": prom-graphite-ingest
+#"9110": prom-blackbox
+#"9113": prom-nginx
+#"9114": prom-elasticsearch
+"9115": prom-blackbox
+#"9116": prom-snmp
+#"9117": prom-apache
+#"9119": prom-bind
+#"9121": prom-redis
+#"9122": prom-influxdb
+#"9125": prom-statsd-ingest
+#"9129": prom-haproxy-logs
+#"9139": prom-azure-sql
+#"9144": prom-grok
+#"9147": prom-nginx-req
+#"9151": prom-varnish-req
+#"9154": prom-postfix
+"9198": prom-logstash
+#"9203": prom-domain
+#"9206": prom-elasticsearch
+#"9219": prom-ssl-certs
+#"9270": prom-jmeter
+"9273": prom-telegraf
+#"9274": prom-kube-persistvol-disk
+#"9276": prom-azure-monitor
+#"9366": prom-haproxy-stick
+"9424": prom-influxdb-stats
+"9448": prom-eventstore
+"9449": prom-eventstore
+
+
+
