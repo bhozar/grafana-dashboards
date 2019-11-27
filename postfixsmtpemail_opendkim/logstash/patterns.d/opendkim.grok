@@ -1,0 +1,1 @@
+OPENDKIM %{POSTFIX_QUEUEID:postfix_queueid}: (?:%{GREEDYDATA:postfix_dkim_message} \(s=%{NOTSPACE:postfix_dkim_sig}\, d=%{HOSTNAME:postfix_dkim_domain}\)|%{GREEDYDATA:postfix_dkim_message})
