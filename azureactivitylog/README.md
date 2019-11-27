@@ -7,3 +7,12 @@ Setup Azure Activity Log to stream data in an Azure EventHub so the ES plugin ca
 Dashboard is setup to filter based on a subscription name by mapping the subscription GUID to a friendly name. The Logstash filter files have been provided.
 
 ![Azure Activity Log Dashboard](./grafana-azure-activity-log01.png)
+
+# To Do
+* Enrich data by including a Logstash dictionary of LocalizedValue fields or operationName as they are not supplied by the Azure Log streaming system and they will make the logs more readable.
+```
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+```
