@@ -7,6 +7,6 @@ Setup Azure NSG FLow Logs to stream data in an Azure EventHub so the ES plugin c
 
 The Logstash filter files have been provided.
 
-To control the costs and increase throughput you will want to increase the batch sizes of how often the Logstash Event Hub data source saves the checkpoints to storage, and increase the number of pipeline.workers and pipeline.batch.size options.
+To control the costs and increase throughput you will want to increase the batch sizes of how often the Logstash Event Hub data source saves the checkpoints to storage, and increase the number of `pipeline.workers` and `pipeline.batch.size` options.
 
 ![Azure NSG Flow Log Dashboard](./grafana-azure-nsgflow-log01.png)
