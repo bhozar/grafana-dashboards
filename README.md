@@ -1,2 +1,4 @@
 # grafana-dashboards
-Various Grafana dashboards and supporting file to configure for data ingestion.
+Grafana dashboards and supporting configuration files to configure for data extract, tranform, and load.
+
+Dashboards are also uploaded to [Grafana.com](https://grafana.com/orgs/bhozar)
