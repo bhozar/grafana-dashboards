@@ -77,7 +77,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1575047166514,
+  "iteration": 1576504959134,
   "links": [],
   "panels": [
     {
@@ -411,16 +411,12 @@
           ],
           "defaults": {
             "mappings": [],
-            "max": 100,
+            "max": 10000,
             "min": 0,
             "thresholds": [
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ],
             "title": ""
@@ -647,7 +643,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "File rear/writes",
+      "title": "File Read/Writes",
       "transform": "table",
       "type": "table"
     },
@@ -839,12 +835,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "/.*Errors/",
-          "yaxis": 2
-        }
-      ],
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -952,7 +943,7 @@
           "decimals": 0,
           "format": "none",
           "label": "Log Entries",
-          "logBase": 1,
+          "logBase": 10,
           "max": null,
           "min": "0",
           "show": true
@@ -2866,7 +2857,6 @@
         "tagValuesQuery": "{\"find\":\"terms\",\"field\":\"host.name.keyword\",\"query\":\"tags.keyword:$tag\"}",
         "tags": [
           "_geoip_lookup_failure",
-          "_xmlparsefailure",
           "beats_input_codec_plain_applied",
           "bitvise"
         ],
@@ -2877,7 +2867,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -2908,5 +2898,5 @@
   "timezone": "",
   "title": "Bitvise SFTP Logs",
   "uid": "VxymKw4Zz",
-  "version": 92
+  "version": 94
 }
