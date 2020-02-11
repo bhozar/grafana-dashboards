@@ -1,6 +1,6 @@
 
 # Octopus Deploy Dashboard
-Dashboard to visualize [Octopus Deploy](https://octopus.com/)
+Dashboard to visualize [Octopus Deploy](https://octopus.com/) deployment and task data.
 
 Setup a read-only user with access to the Octopus Deploy SQL Server database. 
 
