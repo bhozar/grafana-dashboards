@@ -13,4 +13,5 @@ Dashboard is setup to filter the variables bosed on the Project search box. Type
 The Deployment Annotations will display over the top of the time series line graph, and hovering over will give details on each deployment. These are also filtered based on the variables at the top of the page.
 
 ![Octopus Deploy Dashboard](./grafana-octopus-deploy01.png)
-
+![Octopus Deploy Dashboard](./grafana-octopus-deploy02.png)
+![Octopus Deploy Dashboard](./grafana-octopus-deploy03.png)
