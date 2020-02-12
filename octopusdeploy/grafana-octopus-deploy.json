@@ -26,7 +26,7 @@
       "type": "panel",
       "id": "grafana-piechart-panel",
       "name": "Pie Chart",
-      "version": "1.3.9"
+      "version": "1.4.0"
     },
     {
       "type": "panel",
@@ -91,7 +91,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1581418268981,
+  "iteration": 1581509479309,
   "links": [],
   "panels": [
     {
@@ -164,7 +164,7 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT\n  COUNT(d.TaskId) as Deployment,\n  CASE\n    WHEN s.State = 'Failed' THEN 'Failed'\n    WHEN s.State = 'Success' THEN 'Success'\n    WHEN s.State = 'Canceled' THEN 'Cancelled'\n    WHEN s.State = 'Queued' THEN 'Queued'\n    WHEN s.State = 'Executing' THEN 'Executing'\n    WHEN s.State = 'TimedOut' THEN 'Timed Out'\n    WHEN s.State = 'Cancelling' THEN 'Cancelling'\n  END as metric,\n  $__timeGroup(s.QueueTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.QueueTime >= CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.QueueTime, '$timegrain', 0),  s.State\nORDER BY $__timeGroup(s.QueueTime, '$timegrain', 0), COUNT(1) DESC",
+          "rawSql": "SELECT\n  COUNT(d.TaskId) as Deployment,\n  CASE\n    WHEN s.State = 'Failed' THEN 'Failed'\n    WHEN s.State = 'Success' THEN 'Success'\n    WHEN s.State = 'Canceled' THEN 'Cancelled'\n    WHEN s.State = 'Queued' THEN 'Queued'\n    WHEN s.State = 'Executing' THEN 'Executing'\n    WHEN s.State = 'TimedOut' THEN 'Timed Out'\n    WHEN s.State = 'Cancelling' THEN 'Cancelling'\n  END as metric,\n  $__timeGroup(s.QueueTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.QueueTime >= CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.QueueTime, '$interval', 0),  s.State\nORDER BY $__timeGroup(s.QueueTime, '$interval', 0), COUNT(1) DESC",
           "refId": "A"
         }
       ],
@@ -189,6 +189,7 @@
       },
       "hiddenSeries": false,
       "id": 30,
+      "interval": "",
       "legend": {
         "avg": false,
         "current": false,
@@ -258,14 +259,14 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT \n  AVG(DATEDIFF(ss, s.QueueTime, s.CompletedTime)) AS Duration,\n  -- $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$timegrain', 0)\nORDER BY $__timeGroup(s.CompletedTime, '$timegrain', 0)",
+          "rawSql": "SELECT \n  AVG(DATEDIFF(ss, s.QueueTime, s.CompletedTime)) AS Duration,\n  -- $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$interval', 0)\nORDER BY $__timeGroup(s.CompletedTime, '$interval', 0)",
           "refId": "A"
         },
         {
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT \n  COUNT(d.ReleaseId) AS Deployment,\n    CASE\n    WHEN s.State = 'Failed' THEN 'Failed'\n    WHEN s.State = 'Success' THEN 'Success'\n    WHEN s.State = 'Canceled' THEN 'Cancelled'\n    WHEN s.State = 'Queued' THEN 'Queued'\n    WHEN s.State = 'Executing' THEN 'Executing'\n    WHEN s.State = 'TimedOut' THEN 'Timed Out'\n    WHEN s.State = 'Cancelling' THEN 'Cancelling'\n  END as metric,\n  -- $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$timegrain', 0), s.State\nORDER BY $__timeGroup(s.CompletedTime, '$timegrain', 0)",
+          "rawSql": "SELECT \n  COUNT(d.ReleaseId) AS Deployment,\n    CASE\n    WHEN s.State = 'Failed' THEN 'Failed'\n    WHEN s.State = 'Success' THEN 'Success'\n    WHEN s.State = 'Canceled' THEN 'Cancelled'\n    WHEN s.State = 'Queued' THEN 'Queued'\n    WHEN s.State = 'Executing' THEN 'Executing'\n    WHEN s.State = 'TimedOut' THEN 'Timed Out'\n    WHEN s.State = 'Cancelling' THEN 'Cancelling'\n  END as metric,\n  -- $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$interval', 0), s.State\nORDER BY $__timeGroup(s.CompletedTime, '$interval', 0)",
           "refId": "B"
         }
       ],
@@ -358,7 +359,7 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT\n  COUNT(d.TaskId) as Deployment,\n  CASE\n    WHEN s.State = 'Failed' THEN 'Failed'\n    WHEN s.State = 'Success' THEN 'Success'\n    WHEN s.State = 'Canceled' THEN 'Cancelled'\n    WHEN s.State = 'Queued' THEN 'Queued'\n    WHEN s.State = 'Executing' THEN 'Executing'\n    WHEN s.State = 'TimedOut' THEN 'Timed Out'\n    WHEN s.State = 'Cancelling' THEN 'Cancelling'\n  END as metric,\n  $__timeGroup(s.QueueTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.QueueTime >= CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.QueueTime, '$timegrain', 0),  s.State\nORDER BY $__timeGroup(s.QueueTime, '$timegrain', 0)",
+          "rawSql": "SELECT\n  COUNT(d.TaskId) as Deployment,\n  CASE\n    WHEN s.State = 'Failed' THEN 'Failed'\n    WHEN s.State = 'Success' THEN 'Success'\n    WHEN s.State = 'Canceled' THEN 'Cancelled'\n    WHEN s.State = 'Queued' THEN 'Queued'\n    WHEN s.State = 'Executing' THEN 'Executing'\n    WHEN s.State = 'TimedOut' THEN 'Timed Out'\n    WHEN s.State = 'Cancelling' THEN 'Cancelling'\n  END as metric,\n  $__timeGroup(s.QueueTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.QueueTime >= CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.QueueTime, '$interval', 0),  s.State\nORDER BY $__timeGroup(s.QueueTime, '$interval', 0)",
           "refId": "A"
         }
       ],
@@ -409,7 +410,7 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT\n  e.Name as Environment,\n  COUNT(d.TaskId) AS Duration,\n  $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$timegrain', 0), e.Name\nORDER BY $__timeGroup(s.CompletedTime, '$timegrain', 0)",
+          "rawSql": "SELECT\n  e.Name as Environment,\n  COUNT(d.TaskId) AS Duration,\n  $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$interval', 0), e.Name\nORDER BY $__timeGroup(s.CompletedTime, '$interval', 0)",
           "refId": "A"
         }
       ],
@@ -460,7 +461,7 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT \n  AVG(DATEDIFF(ss, s.QueueTime, s.CompletedTime)) AS Duration,\n  $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project) AND\n  s.State = 'Success'\nGROUP BY  $__timeGroup(s.CompletedTime, '$timegrain', 0)\nORDER BY $__timeGroup(s.CompletedTime, '$timegrain', 0)",
+          "rawSql": "SELECT \n  AVG(DATEDIFF(ss, s.QueueTime, s.CompletedTime)) AS Duration,\n  $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project) AND\n  s.State = 'Success'\nGROUP BY  $__timeGroup(s.CompletedTime, '$interval', 0)\nORDER BY $__timeGroup(s.CompletedTime, '$interval', 0)",
           "refId": "A"
         }
       ],
@@ -536,7 +537,7 @@
           "alias": "",
           "format": "table",
           "hide": true,
-          "rawSql": "SELECT \n  COUNT(d.ReleaseId) AS Deployment,\n  s.State AS metric,\n  -- $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '1d', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '1d', 0), s.State\nORDER BY $__timeGroup(s.CompletedTime, '1d', 0)",
+          "rawSql": "SELECT \n  COUNT(d.ReleaseId) AS Deployment,\n  s.State AS metric,\n  -- $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '1d', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '1d', 0), s.State\nORDER BY $__timeGroup(s.CompletedTime, '1d', 0)",
           "refId": "A"
         }
       ],
@@ -587,7 +588,7 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT\n  e.Name as Environment,\n  AVG(DATEDIFF(ss, s.QueueTime, s.CompletedTime)) AS Duration,\n  $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$timegrain', 0), e.Name\nORDER BY $__timeGroup(s.CompletedTime, '$timegrain', 0)",
+          "rawSql": "SELECT\n  e.Name as Environment,\n  AVG(DATEDIFF(ss, s.QueueTime, s.CompletedTime)) AS Duration,\n  $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$interval', 0), e.Name\nORDER BY $__timeGroup(s.CompletedTime, '$interval', 0)",
           "refId": "A"
         }
       ],
@@ -639,7 +640,7 @@
           "alias": "",
           "format": "time_series",
           "hide": false,
-          "rawSql": "SELECT\n  e.Name as Environment,\n  DATEDIFF(ss, s.QueueTime, s.CompletedTime) AS Duration,\n  $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$timegrain', 0), e.Name, DATEDIFF(ss, s.QueueTime, s.CompletedTime)\nORDER BY $__timeGroup(s.CompletedTime, '$timegrain', 0)",
+          "rawSql": "SELECT\n  e.Name as Environment,\n  DATEDIFF(ss, s.QueueTime, s.CompletedTime) AS Duration,\n  $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND   \n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '$interval', 0), e.Name, DATEDIFF(ss, s.QueueTime, s.CompletedTime)\nORDER BY $__timeGroup(s.CompletedTime, '$interval', 0)",
           "refId": "A"
         }
       ],
@@ -1264,7 +1265,7 @@
           "alias": "",
           "format": "table",
           "hide": true,
-          "rawSql": "SELECT \n  COUNT(d.ReleaseId) AS Deployment,\n  s.State AS metric,\n  -- $__timeGroup(s.CompletedTime, '$timegrain', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '1d', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '1d', 0), s.State\nORDER BY $__timeGroup(s.CompletedTime, '1d', 0)",
+          "rawSql": "SELECT \n  COUNT(d.ReleaseId) AS Deployment,\n  s.State AS metric,\n  -- $__timeGroup(s.CompletedTime, '$interval', 0 ) AS [time]\n  $__timeGroup(s.CompletedTime, '1d', 0 ) AS [time]\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE \n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project)\nGROUP BY  $__timeGroup(s.CompletedTime, '1d', 0), s.State\nORDER BY $__timeGroup(s.CompletedTime, '1d', 0)",
           "refId": "A"
         }
       ],
@@ -1575,16 +1576,16 @@
         "current": {
           "selected": false,
           "text": "auto",
-          "value": "$__auto_interval_timegrain"
+          "value": "$__auto_interval_interval"
         },
         "hide": 0,
         "label": "⏳ Time Grain",
-        "name": "timegrain",
+        "name": "interval",
         "options": [
           {
             "selected": true,
             "text": "auto",
-            "value": "$__auto_interval_timegrain"
+            "value": "$__auto_interval_interval"
           },
           {
             "selected": false,
@@ -1650,7 +1651,7 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-30d",
     "to": "now"
   },
   "timepicker": {
@@ -1670,5 +1671,5 @@
   "timezone": "",
   "title": "Octopus Deploy",
   "uid": "3hW54K8Wz",
-  "version": 118
+  "version": 120
 }
