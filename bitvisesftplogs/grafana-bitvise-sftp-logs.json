@@ -26,7 +26,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "6.5.1"
+      "version": "6.6.1"
     },
     {
       "type": "panel",
@@ -77,7 +77,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1576504959134,
+  "iteration": 1581505113447,
   "links": [],
   "panels": [
     {
@@ -97,6 +97,7 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
+      "colorPrefix": false,
       "colorValue": false,
       "colors": [
         "#299c46",
@@ -118,6 +119,7 @@
         "x": 0,
         "y": 1
       },
+      "hideTimeOverride": true,
       "id": 16,
       "interval": null,
       "links": [],
@@ -139,7 +141,7 @@
       "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
-      "prefix": "",
+      "prefix": "<center>$host App Version</center><br>",
       "prefixFontSize": "50%",
       "rangeMaps": [
         {
@@ -176,11 +178,11 @@
           ],
           "metrics": [
             {
-              "field": "log.app.keyword",
+              "field": "sftp.app.keyword",
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "refId": "A",
@@ -188,9 +190,10 @@
         }
       ],
       "thresholds": "",
-      "timeFrom": null,
+      "timeFrom": "10m",
       "timeShift": null,
-      "title": "$host App Version",
+      "title": "",
+      "transparent": true,
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -236,7 +239,12 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "dataLinks": [
+          {
+            "title": "Filter on Username: ${username}",
+            "url": "?var-username=${username}"
+          }
+        ]
       },
       "percentage": false,
       "pointradius": 2,
@@ -404,29 +412,36 @@
       "id": 44,
       "links": [],
       "options": {
-        "displayMode": "lcd",
+        "displayMode": "gradient",
         "fieldOptions": {
           "calcs": [
             "sum"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "mappings": [],
             "max": 10000,
-            "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ],
-            "title": ""
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "title": "",
+            "unit": "locale"
           },
-          "override": {},
+          "overrides": [],
           "values": false
         },
-        "orientation": "horizontal"
+        "orientation": "horizontal",
+        "showUnfilled": true
       },
-      "pluginVersion": "6.5.1",
+      "pluginVersion": "6.6.1",
       "targets": [
         {
           "alias": "",
@@ -489,12 +504,13 @@
       "pageSize": null,
       "showHeader": true,
       "sort": {
-        "col": 0,
+        "col": 3,
         "desc": true
       },
       "styles": [
         {
           "alias": "Account",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -511,6 +527,7 @@
         },
         {
           "alias": "File",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -527,6 +544,7 @@
         },
         {
           "alias": "BytesWritten",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -543,6 +561,7 @@
         },
         {
           "alias": "BytesRead",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -559,6 +578,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -663,12 +683,13 @@
       "pageSize": null,
       "showHeader": true,
       "sort": {
-        "col": 0,
-        "desc": true
+        "col": null,
+        "desc": false
       },
       "styles": [
         {
           "alias": "Account",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -685,6 +706,7 @@
         },
         {
           "alias": "File",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -701,6 +723,7 @@
         },
         {
           "alias": "BytesWritten",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -717,6 +740,7 @@
         },
         {
           "alias": "BytesRead",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -733,6 +757,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -986,6 +1011,7 @@
       "styles": [
         {
           "alias": "Account",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1002,6 +1028,7 @@
         },
         {
           "alias": "Algorithm",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1018,6 +1045,7 @@
         },
         {
           "alias": "SHA-256",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1034,6 +1062,7 @@
         },
         {
           "alias": "AuthenticationMethod",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1050,6 +1079,7 @@
         },
         {
           "alias": "KeyLength",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1066,6 +1096,7 @@
         },
         {
           "alias": "MD5",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1082,6 +1113,7 @@
         },
         {
           "alias": "Flags",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1228,12 +1260,13 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": null,
-        "desc": false
+        "col": 1,
+        "desc": true
       },
       "styles": [
         {
           "alias": "Account",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1247,6 +1280,23 @@
           "thresholds": [],
           "type": "string",
           "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
         }
       ],
       "targets": [
@@ -1412,6 +1462,7 @@
       "styles": [
         {
           "alias": "RemoteIP",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1424,10 +1475,11 @@
           "pattern": "remoteIP.keyword",
           "thresholds": [],
           "type": "number",
-          "unit": "short"
+          "unit": "none"
         },
         {
           "alias": "Country",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1444,6 +1496,7 @@
         },
         {
           "alias": "Account",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1457,6 +1510,23 @@
           "thresholds": [],
           "type": "string",
           "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
         }
       ],
       "targets": [
@@ -1469,7 +1539,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "_count",
                 "size": "1000"
               },
               "type": "terms"
@@ -1482,7 +1552,7 @@
                 "min_doc_count": 1,
                 "missing": "-",
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "_count",
                 "size": "100"
               },
               "type": "terms"
@@ -1494,7 +1564,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "_count",
                 "size": "10"
               },
               "type": "terms"
@@ -1536,12 +1606,13 @@
       "pageSize": 100,
       "showHeader": true,
       "sort": {
-        "col": null,
-        "desc": false
+        "col": 3,
+        "desc": true
       },
       "styles": [
         {
           "alias": "IPs",
+          "align": "auto",
           "colorMode": "value",
           "colors": [
             "rgba(50, 172, 45, 0.97)",
@@ -1561,6 +1632,7 @@
         },
         {
           "alias": "Count",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1577,6 +1649,7 @@
         },
         {
           "alias": "Remote IP",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1593,6 +1666,7 @@
         },
         {
           "alias": "Account",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1690,23 +1764,27 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "date"
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "decimals": 0,
-          "pattern": "/.*/",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": null,
+          "mappingType": 1,
+          "pattern": "Total",
           "thresholds": [],
           "type": "number",
-          "unit": "none"
+          "unit": "locale"
         }
       ],
       "targets": [
@@ -2610,12 +2688,14 @@
           "styles": [
             {
               "alias": "Time",
+              "align": "auto",
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "pattern": "@timestamp",
               "type": "date"
             },
             {
               "alias": "Description",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2632,6 +2712,7 @@
             },
             {
               "alias": "Description 2",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2648,6 +2729,7 @@
             },
             {
               "alias": "Path",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2664,6 +2746,7 @@
             },
             {
               "alias": "Log_Sequence",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2680,6 +2763,7 @@
             },
             {
               "alias": "Host",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2696,6 +2780,7 @@
             },
             {
               "alias": "Account",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2712,6 +2797,7 @@
             },
             {
               "alias": "BytesRecvd",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2728,6 +2814,7 @@
             },
             {
               "alias": "BytesSent",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2744,6 +2831,7 @@
             },
             {
               "alias": "BytesWriten",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2760,6 +2848,7 @@
             },
             {
               "alias": "BytesRead",
+              "align": "auto",
               "colorMode": null,
               "colors": [
                 "rgba(245, 54, 54, 0.9)",
@@ -2806,7 +2895,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 21,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [
     "SFTP",
@@ -2863,11 +2952,20 @@
         "tagsQuery": "{\"find\":\"terms\",\"field\":\"tags.keyword\"}",
         "type": "query",
         "useTags": true
+      },
+      {
+        "datasource": "Elasticsearch-bitvise-logs",
+        "filters": [],
+        "hide": 0,
+        "label": "",
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
       }
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -2898,5 +2996,5 @@
   "timezone": "",
   "title": "Bitvise SFTP Logs",
   "uid": "VxymKw4Zz",
-  "version": 94
+  "version": 100
 }
