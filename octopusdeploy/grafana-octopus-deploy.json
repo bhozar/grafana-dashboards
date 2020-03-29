@@ -1670,7 +1670,7 @@
           "alias": "",
           "format": "table",
           "hide": false,
-          "rawSql": "SELECT TOP 10\n  p.Name AS ProjectName,\n  e.Name AS Environment,\n  COUNT(p.Name) AS Total\nFROM \n  [Octopus].[dbo].[Deployment] d\n  INNER JOIN [Octopus].[dbo].[DeploymentEnvironment] e ON e.Id = d.EnvironmentId\n  INNER JOIN [Octopus].[dbo].[Project] p ON p.Id = d.ProjectId\n  INNER JOIN [Octopus].[dbo].[Release] r ON r.Id = d.ReleaseId\n  INNER JOIN [Octopus].[dbo].[ServerTask] s ON s.Id = d.TaskId\nWHERE\n  s.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  s.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  e.Name IN ($environment) AND\n  p.Name IN ($project) AND\n  s.State = 'Failed'\nGROUP BY p.Name, e.Name\nORDER BY count(1) DESC",
+          "rawSql": "SELECT TOP 10\n  d.ProjectName AS ProjectName,\n  d.EnvironmentName AS Environment,\n  COUNT(d.ProjectName) AS Total\nFROM \n  [Octopus].[dbo].[DeploymentHistory] d\nWHERE\n  d.CompletedTime >=  CONVERT( DATETIMEOFFSET, $__timeFrom(), 0 ) AND\n  d.CompletedTime <   CONVERT( DATETIMEOFFSET, $__timeTo(), 0 ) AND\n  d.EnvironmentName IN ($environment) AND\n  d.ProjectName IN ($project) AND\n  d.TaskState = 'Failed'\nGROUP BY d.ProjectName, d.EnvironmentName\nORDER BY count(1) DESC",
           "refId": "B"
         },
         {
