@@ -75,14 +75,14 @@ Required for the graph displaying results from the port 25/587 probes. Required 
         insecure_skip_verify: true
       query_response:
         - expect: "^220 ([^ ]+) ESMTP (.+)$"
-        - send: "EHLO prober"
+        - send: "EHLO prober\r"
         - expect: "^250-(.*)"
-        - send: "STARTTLS"
+        - send: "STARTTLS\r"
         - expect: "^220"
         - starttls: true
-        - send: "EHLO prober"
+        - send: "EHLO prober\r"
         - expect: "^250-"
-        - send: "QUIT"
+        - send: "QUIT\r"
   smtp_banner:
     prober: tcp
     timeout: 20s
@@ -90,13 +90,13 @@ Required for the graph displaying results from the port 25/587 probes. Required 
       preferred_ip_protocol: ip4
       query_response:
         - expect: "^220 ([^ ]+) ESMTP (.+)$"
-        - send: "EHLO prober"
+        - send: "EHLO prober\r"
         - expect: "^250-(.*)"
-        - send: "MAIL FROM:ping@your.mail.server.com"
+        - send: "MAIL FROM:ping@your.mail.server.com\r"
         - expect: "^250-(.*)"
-        - send: "RCPT TO:test.email@your.mail.domain.com"
+        - send: "RCPT TO:test.email@your.mail.domain.com\r"
         - expect: "^250-(.*)"
-        - send: "QUIT"
+        - send: "QUIT\r"
 ```
 
 # Screenshots
