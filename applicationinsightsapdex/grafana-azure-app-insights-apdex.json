@@ -1,51 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_AZURE-MON-PROD",
-      "label": "Azure-Mon-PROD",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "grafana-azure-monitor-datasource",
-      "pluginName": "Azure Monitor"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.6.2"
-    },
-    {
-      "type": "datasource",
-      "id": "grafana-azure-monitor-datasource",
-      "name": "Azure Monitor",
-      "version": "0.3.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "text",
-      "name": "Text",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -56,15 +17,16 @@
   },
   "description": "Dashboard to visualize App Insights data to calculate Apdex scores. https://github.com/bhozar/grafana-dashboards/tree/master/applicationinsightsapdex",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1583538426132,
+  "id": 232,
   "links": [],
   "panels": [
     {
-      "content": "# Apdex\r\n[Apdex (Application Performance Index)](http://apdex.org/overview.html) is an open standard method for measuring application performance. It contextualizes your application's performance in terms of the quality of experience you provide to your users.\r\n\r\nApdex classifies performance into three zones based on a baseline performance threshold T you define for your app:\r\n\r\n| Zone    \t| Minimum Response Time\t| Maximum Response Time    |\r\n|-----------|-----------------------|--------------------------|\r\n|Satisfied\t|0 seconds\t            |T seconds                 |\r\n|Tolerating\t|T seconds\t            |4T seconds                |\r\n|Frustrated\t|4T seconds\t            |-                         |",
-      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
@@ -72,18 +34,206 @@
         "y": 0
       },
       "id": 59,
-      "mode": "markdown",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Apdex\r\n[Apdex (Application Performance Index)](http://apdex.org/overview.html) is an open standard method for measuring application performance. It contextualizes your application's performance in terms of the quality of experience you provide to your users.\r\n\r\nApdex classifies performance into three zones based on a baseline performance threshold T you define for your app:\r\n\r\n| Zone    \t| Minimum Response Time\t| Maximum Response Time    |\r\n|-----------|-----------------------|--------------------------|\r\n|Satisfied\t|0 seconds\t            |T seconds                 |\r\n|Tolerating\t|T seconds\t            |4T seconds                |\r\n|Frustrated\t|4T seconds\t            |-                         |",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.0.1",
       "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "columns": [],
-      "datasource": "${DS_AZURE-MON-PROD}",
-      "fontSize": "100%",
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "000000003"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Apdex Score"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red"
+                    },
+                    {
+                      "color": "dark-orange",
+                      "value": 0.51
+                    },
+                    {
+                      "color": "dark-green",
+                      "value": 0.93
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Apdex Interpretation"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 140
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Satisfied Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-green"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Tolerating Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Frustrated Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 4,
         "w": 24,
@@ -91,133 +241,20 @@
         "y": 8
       },
       "id": 56,
-      "links": [],
-      "options": {},
-      "pageSize": 100,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": null,
-        "desc": false
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
       },
-      "styles": [
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Apdex Score",
-          "thresholds": [
-            "0.51",
-            "0.93"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Satisfied Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "#FF780A"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Tolerating Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Frustrated Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "Set Operations: ${__cell}",
-          "linkUrl": "/grafana/d/S7Q9Tq-Zz/app-insights-apdex?${__all_variables}&${__cell:raw}&var-operations=${__cell}",
-          "mappingType": 1,
-          "pattern": "Values",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": null,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "locale"
-        }
-      ],
+      "pluginVersion": "12.0.1",
       "targets": [
         {
           "appInsights": {
@@ -226,7 +263,9 @@
             ],
             "aggregation": "sum",
             "alias": "{{metric}} {{groupbyvalue}}",
-            "dimension": "request/name",
+            "dimension": [
+              "request/name"
+            ],
             "dimensions": [
               "request/source",
               "request/name",
@@ -274,6 +313,7 @@
           "azureMonitor": {
             "aggOptions": [],
             "dimensionFilter": "*",
+            "dimensionFilters": [],
             "metricDefinition": "select",
             "metricName": "select",
             "metricNamespace": "select",
@@ -283,152 +323,230 @@
             "timeGrains": [],
             "top": "10"
           },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "000000003"
+          },
           "hide": false,
+          "insightsAnalytics": {
+            "query": "",
+            "resultFormat": "time_series"
+          },
           "queryType": "Azure Log Analytics",
           "refId": "A",
           "subscription": "dae9d4f9-547a-4ea7-a419-b1c34a8f9d3f"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Apdex - $resourcenames Page Views",
-      "transform": "table",
       "type": "table"
     },
     {
-      "columns": [],
-      "datasource": "${DS_AZURE-MON-PROD}",
-      "fontSize": "100%",
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "000000003"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Apdex Score"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red"
+                    },
+                    {
+                      "color": "dark-orange",
+                      "value": 0.51
+                    },
+                    {
+                      "color": "dark-green",
+                      "value": 0.93
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Apdex Interpretation"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 140
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Satisfied Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-green"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Tolerating Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Frustrated Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 10,
         "w": 24,
         "x": 0,
         "y": 12
       },
-      "id": 54,
-      "links": [],
-      "options": {},
-      "pageSize": 100,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": null,
-        "desc": false
+      "id": 60,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
       },
-      "styles": [
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Apdex Score",
-          "thresholds": [
-            "0.51",
-            "0.93"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Satisfied Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "#FF780A"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Tolerating Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Frustrated Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Values",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": null,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "locale"
-        }
-      ],
+      "pluginVersion": "12.0.1",
       "targets": [
         {
           "appInsights": {
@@ -437,7 +555,9 @@
             ],
             "aggregation": "sum",
             "alias": "{{metric}} {{groupbyvalue}}",
-            "dimension": "request/name",
+            "dimension": [
+              "request/name"
+            ],
             "dimensions": [
               "request/source",
               "request/name",
@@ -485,6 +605,7 @@
           "azureMonitor": {
             "aggOptions": [],
             "dimensionFilter": "*",
+            "dimensionFilters": [],
             "metricDefinition": "select",
             "metricName": "select",
             "metricNamespace": "select",
@@ -494,152 +615,230 @@
             "timeGrains": [],
             "top": "10"
           },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "000000003"
+          },
           "hide": false,
+          "insightsAnalytics": {
+            "query": "",
+            "resultFormat": "time_series"
+          },
           "queryType": "Azure Log Analytics",
           "refId": "A",
           "subscription": "dae9d4f9-547a-4ea7-a419-b1c34a8f9d3f"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Apdex - $resourcenames Requests",
-      "transform": "table",
       "type": "table"
     },
     {
-      "columns": [],
-      "datasource": "${DS_AZURE-MON-PROD}",
-      "fontSize": "100%",
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "000000003"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Apdex Score"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red"
+                    },
+                    {
+                      "color": "dark-orange",
+                      "value": 0.51
+                    },
+                    {
+                      "color": "dark-green",
+                      "value": 0.93
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Apdex Interpretation"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 140
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Satisfied Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-green"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Tolerating Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Frustrated Users"
+            },
+            "properties": [
+              {
+                "id": "links"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 10,
         "w": 24,
         "x": 0,
         "y": 22
       },
-      "id": 55,
-      "links": [],
-      "options": {},
-      "pageSize": 100,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": null,
-        "desc": false
+      "id": 61,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
       },
-      "styles": [
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Apdex Score",
-          "thresholds": [
-            "0.51",
-            "0.93"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Satisfied Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "#FF780A"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Tolerating Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Frustrated Users",
-          "thresholds": [
-            "0",
-            "0"
-          ],
-          "type": "number",
-          "unit": "locale"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Values",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": null,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "locale"
-        }
-      ],
+      "pluginVersion": "12.0.1",
       "targets": [
         {
           "appInsights": {
@@ -648,7 +847,9 @@
             ],
             "aggregation": "sum",
             "alias": "{{metric}} {{groupbyvalue}}",
-            "dimension": "request/name",
+            "dimension": [
+              "request/name"
+            ],
             "dimensions": [
               "request/source",
               "request/name",
@@ -696,6 +897,7 @@
           "azureMonitor": {
             "aggOptions": [],
             "dimensionFilter": "*",
+            "dimensionFilters": [],
             "metricDefinition": "select",
             "metricName": "select",
             "metricNamespace": "select",
@@ -705,60 +907,106 @@
             "timeGrains": [],
             "top": "10"
           },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "000000003"
+          },
           "hide": false,
+          "insightsAnalytics": {
+            "query": "",
+            "resultFormat": "time_series"
+          },
           "queryType": "Azure Log Analytics",
           "refId": "A",
           "subscription": "dae9d4f9-547a-4ea7-a419-b1c34a8f9d3f"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Apdex - $resourcenames Dependencies",
-      "transform": "table",
       "type": "table"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_AZURE-MON-PROD}",
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "000000003"
+      },
       "description": "See how your Apdex Score changes over time.",
-      "fill": 1,
-      "fillGradient": 0,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 10,
         "w": 24,
         "x": 0,
         "y": 32
       },
-      "hiddenSeries": false,
       "id": 57,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "7.1.0",
       "targets": [
         {
           "appInsights": {
@@ -767,7 +1015,9 @@
             ],
             "aggregation": "sum",
             "alias": "{{metric}} {{groupbyvalue}}",
-            "dimension": "request/name",
+            "dimension": [
+              "request/name"
+            ],
             "dimensions": [
               "request/source",
               "request/name",
@@ -815,6 +1065,7 @@
           "azureMonitor": {
             "aggOptions": [],
             "dimensionFilter": "*",
+            "dimensionFilters": [],
             "metricDefinition": "select",
             "metricName": "select",
             "metricNamespace": "select",
@@ -824,95 +1075,152 @@
             "timeGrains": [],
             "top": "10"
           },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "000000003"
+          },
           "hide": false,
+          "insightsAnalytics": {
+            "query": "",
+            "resultFormat": "time_series"
+          },
           "queryType": "Azure Log Analytics",
           "refId": "A",
           "subscription": "dae9d4f9-547a-4ea7-a419-b1c34a8f9d3f"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "$resourcenames Daily Apdex Score",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_AZURE-MON-PROD}",
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "000000003"
+      },
       "description": "See your how the performance experience of your users have changed over time.",
-      "fill": 1,
-      "fillGradient": 0,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "count_ Frustrated"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "count_ Satisfied"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "count_ Tolerating"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 10,
         "w": 24,
         "x": 0,
         "y": 42
       },
-      "hiddenSeries": false,
       "id": 58,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "7.1.0",
       "targets": [
         {
           "appInsights": {
@@ -921,7 +1229,9 @@
             ],
             "aggregation": "sum",
             "alias": "{{metric}} {{groupbyvalue}}",
-            "dimension": "request/name",
+            "dimension": [
+              "request/name"
+            ],
             "dimensions": [
               "request/source",
               "request/name",
@@ -969,6 +1279,7 @@
           "azureMonitor": {
             "aggOptions": [],
             "dimensionFilter": "*",
+            "dimensionFilters": [],
             "metricDefinition": "select",
             "metricName": "select",
             "metricNamespace": "select",
@@ -978,57 +1289,27 @@
             "timeGrains": [],
             "top": "10"
           },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "000000003"
+          },
           "hide": false,
+          "insightsAnalytics": {
+            "query": "",
+            "resultFormat": "time_series"
+          },
           "queryType": "Azure Log Analytics",
           "refId": "A",
           "subscription": "dae9d4f9-547a-4ea7-a419-b1c34a8f9d3f"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "$resourcenames Quality Trend",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 22,
-  "style": "dark",
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 41,
   "tags": [
     "Azure",
     "Apdex",
@@ -1038,117 +1319,99 @@
     "list": [
       {
         "current": {
-          "selected": true,
           "text": "Azure-Mon-PROD",
-          "value": "Azure-Mon-PROD"
+          "value": "000000003"
         },
-        "hide": 0,
         "includeAll": false,
         "label": "Application Insights Source",
-        "multi": false,
         "name": "datasource2",
         "options": [],
         "query": "grafana-azure-monitor-datasource",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "type": "datasource"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "$datasource2",
+        "current": {
+          "text": "Production - CSP",
+          "value": "da260ecc-9137-4f3b-83b5-dfc5192db411"
+        },
+        "datasource": {
+          "type": "grafana-azure-monitor-datasource",
+          "uid": "$datasource2"
+        },
         "definition": "Subscriptions()",
-        "hide": 0,
         "includeAll": false,
         "label": "Subscriptions",
-        "multi": false,
         "name": "subscriptions",
         "options": [],
         "query": "Subscriptions()",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "$datasource2",
+        "current": {
+          "text": "vks-performinsights-rg",
+          "value": "vks-performinsights-rg"
+        },
+        "datasource": {
+          "type": "grafana-azure-monitor-datasource",
+          "uid": "$datasource2"
+        },
         "definition": "ResourceGroups($subscriptions)",
-        "hide": 0,
         "includeAll": false,
         "label": "Resource Groups",
-        "multi": false,
         "name": "resourcegroups",
         "options": [],
         "query": "ResourceGroups($subscriptions)",
         "refresh": 1,
         "regex": "/.*insights.*|.*learn/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "$datasource2",
+        "current": {
+          "text": "microsoft.insights/components",
+          "value": "microsoft.insights/components"
+        },
+        "datasource": {
+          "type": "grafana-azure-monitor-datasource",
+          "uid": "$datasource2"
+        },
         "definition": "Namespaces($resourcegroups)",
-        "hide": 0,
         "includeAll": false,
         "label": "Namespace",
-        "multi": false,
         "name": "namespace",
         "options": [],
         "query": "Namespaces($resourcegroups)",
         "refresh": 1,
         "regex": "/^microsoft.insights.*|^Microsoft.Insights.*/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "$datasource2",
+        "current": {
+          "text": "vks-perform-ai",
+          "value": "vks-perform-ai"
+        },
+        "datasource": {
+          "type": "grafana-azure-monitor-datasource",
+          "uid": "$datasource2"
+        },
         "definition": "ResourceNames($resourcegroups, $namespace)",
-        "hide": 0,
         "includeAll": false,
         "label": "Resource Names",
-        "multi": false,
         "name": "resourcenames",
         "options": [],
         "query": "ResourceNames($resourcegroups, $namespace)",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "*",
           "value": "*"
         },
-        "hide": 0,
         "label": "Operations",
         "name": "operations",
         "options": [
@@ -1159,27 +1422,23 @@
           }
         ],
         "query": "*",
-        "skipUrlSync": false,
         "type": "textbox"
       },
       {
         "current": {
-          "selected": false,
-          "text": "1250",
-          "value": "1250"
+          "text": "2250",
+          "value": "2250"
         },
-        "hide": 0,
         "label": "Apdex Threshold (ms)",
         "name": "ApdexThresholdInMilliseconds",
         "options": [
           {
             "selected": true,
-            "text": "1250",
-            "value": "1250"
+            "text": "2250",
+            "value": "2250"
           }
         ],
-        "query": "1250",
-        "skipUrlSync": false,
+        "query": "2250",
         "type": "textbox"
       }
     ]
@@ -1190,7 +1449,6 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -1200,21 +1458,10 @@
       "1h",
       "2h",
       "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
     ]
   },
   "timezone": "",
   "title": "App Insights Apdex",
   "uid": "S7Q9Tq-Zz",
-  "version": 65
+  "version": 72
 }
