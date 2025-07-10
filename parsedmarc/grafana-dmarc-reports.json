@@ -2399,14 +2399,15 @@
               },
               {
                 "color": "dark-orange",
-                "value": 10
+                "value": 1000
               },
               {
                 "color": "dark-red",
-                "value": 500
+                "value": 5000
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -2420,6 +2421,7 @@
       "maxDataPoints": 1,
       "options": {
         "basemap": {
+          "config": {},
           "name": "Basemap",
           "type": "default"
         },
@@ -2452,7 +2454,7 @@
                   "field": "Total",
                   "fixed": 5,
                   "max": 30,
-                  "min": 2
+                  "min": 1
                 },
                 "symbol": {
                   "fixed": "img/icons/marker/circle.svg",
@@ -2465,7 +2467,7 @@
                 "text": {
                   "field": "Total",
                   "fixed": "",
-                  "mode": "fixed"
+                  "mode": "field"
                 },
                 "textConfig": {
                   "fontSize": 12,
@@ -2478,7 +2480,7 @@
             },
             "filterData": {
               "id": "byRefId",
-              "options": "A"
+              "options": "reduce-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A"
             },
             "location": {
               "gazetteer": "public/gazetteer/countries.json",
@@ -2556,6 +2558,7 @@
         {
           "id": "reduce",
           "options": {
+            "labelsToFields": false,
             "reducers": [
               "sum"
             ]
@@ -4290,7 +4293,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "12.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -4545,7 +4548,7 @@
             "showHeader": true,
             "sortBy": []
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "12.0.1",
           "targets": [
             {
               "bucketAggs": [
@@ -4732,15 +4735,15 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#C4162A"
+                    "color": "dark-green"
                   },
                   {
                     "color": "#FA6400",
                     "value": 100
                   },
                   {
-                    "color": "#37872D",
-                    "value": 0
+                    "color": "dark-red",
+                    "value": 1000
                   }
                 ]
               }
@@ -4812,6 +4815,7 @@
                 },
                 "location": {
                   "gazetteer": "public/gazetteer/countries.json",
+                  "lookup": "source_country.keyword",
                   "mode": "lookup"
                 },
                 "name": "Layer 0",
@@ -4830,7 +4834,7 @@
               "zoom": 1
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "12.0.1",
           "targets": [
             {
               "bucketAggs": [
@@ -4840,10 +4844,10 @@
                   "field": "source_country.keyword",
                   "id": "9",
                   "settings": {
-                    "min_doc_count": 1,
+                    "min_doc_count": "1",
                     "order": "desc",
-                    "orderBy": "_term",
-                    "size": "10"
+                    "orderBy": "_count",
+                    "size": "25"
                   },
                   "type": "terms"
                 }
@@ -4854,11 +4858,7 @@
               "hide": false,
               "metrics": [
                 {
-                  "$$hashKey": "object:58",
-                  "field": "message_count",
                   "id": "4",
-                  "meta": {},
-                  "settings": {},
                   "type": "count"
                 }
               ],
@@ -4963,7 +4963,7 @@
             "showHeader": true,
             "sortBy": []
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "12.0.1",
           "targets": [
             {
               "bucketAggs": [
@@ -5132,7 +5132,7 @@
               }
             ]
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "12.0.1",
           "targets": [
             {
               "bucketAggs": [
@@ -5342,6 +5342,6 @@
   "timezone": "",
   "title": "DMARC Reports",
   "uid": "SDksirRWz",
-  "version": 128,
+  "version": 129,
   "weekStart": ""
 }
