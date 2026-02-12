@@ -1,0 +1,2419 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFINITY",
+      "label": "Infinity",
+      "description": "Select your Azure Infinity data source",
+      "type": "datasource",
+      "pluginId": "yesoreyeram-infinity-datasource",
+      "pluginName": "Infinity"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "yesoreyeram-infinity-datasource",
+      "name": "Infinity",
+      "version": "2.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 0,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 24,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<img src=\"data:image/png;base64,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\" height=\"150\"/>\n\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.3.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 13,
+        "x": 7,
+        "y": 0
+      },
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Azure Carbon Optimization Report\nEmissions data is available for the previous month by day 20 of the current month.\n\nOnly 13 months of data is available at one time.\n\n**Panels will appear broken until the Start Date and End Date are set due to limitations of the Azure API.**\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.3.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "Total carbon emissions",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 5
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"OverallSummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-01}\",\n    \"end\": \"${__to:date:YYYY-MM-01}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"OverallSummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "headers": [],
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "monthOverMonthEmissionsChangeRatio": true,
+              "monthlyEmissionsChangeValue": true,
+              "previousMonthEmissions": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "description": "${__to:date:YYYY-MM-01}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scope 1  "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ea0cd7",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scope 2  "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scope 3  "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5769f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 17,
+        "x": 7,
+        "y": 5
+      },
+      "id": 2,
+      "options": {
+        "barRadius": 0.2,
+        "barWidth": 0.83,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "never",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "xField": "Time",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 1",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope1\"],\r\n  \"dateRange\": {\r\n  \"start\": \"${StartDate}\",\r\n  \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 2",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope2\"],\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 3",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope3\"],\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Monthly Emission Trends",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "monthOverMonthEmissionsChangeRatio * 100"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-green",
+                      "value": 0
+                    },
+                    {
+                      "color": "dark-red",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 0,
+        "y": 13
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 20
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"OverallSummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-01}\",\n    \"end\": \"${__to:date:YYYY-MM-01}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"OverallSummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${EndDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "headers": [],
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "monthOverMonthEmissionsChangeRatio"
+                }
+              },
+              "operator": "*",
+              "right": {
+                "fixed": "100"
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "include": [
+                "monthOverMonthEmissionsChangeRatio"
+              ],
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "monthOverMonthEmissionsChangeRatio": true,
+              "monthOverMonthEmissionsChangeRatio * 100": false,
+              "monthlyEmissionsChangeValue": true,
+              "previousMonthEmissions": false
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "latestMonthEmissions": "This Month total emissions",
+              "monthOverMonthEmissionsChangeRatio * 100": "Change from previous month",
+              "monthlyEmissionsChangeValue": "",
+              "previousMonthEmissions": "Last Month total emissions"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scope 1  "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ea0cd7",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scope 2  "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scope 3  "
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5769f2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 17,
+        "x": 7,
+        "y": 14
+      },
+      "id": 25,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 1",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope1\"],\r\n  \"dateRange\": {\r\n  \"start\": \"${StartDate}\",\r\n  \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 2",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope2\"],\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 3",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope3\"],\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Scope 1, 2, and 3 Comparison",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 2,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 20,
+        "w": 5,
+        "x": 0,
+        "y": 19
+      },
+      "id": 23,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.8,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "vertical",
+        "showValue": "never",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "itemName",
+              "text": "Resource Type",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": "Emissions",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "uql",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "uql": "parse-json\r\n| scope \"value\"\r\n| project \"Resource\"=\"itemName\", \"Latest\"=tonumber(\"latestMonthEmissions\"), \"Previous\"=tonumber(\"previousMonthEmissions\")\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachinescalesets','VM Scale Set')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachines','Virtual Machine')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/disks','Disk')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.storage/storageaccounts','Storage Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/serverfarms','App Service Plan')\r\n| extend \"Resource\"=replace_string(\"Resource\",'Others-Exclude-Top-Items-From-Overall-Summary','Others')\r\n| summarize \"This Month\"=sum(\"Latest\"), \"Last Month\"=sum(\"Previous\") by \"Resource\"\r\n| order by \"This Month\" desc",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsSummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${EndDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"ResourceType\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Total 5 by Service Type Month on Month",
+      "transformations": [
+        {
+          "id": "transpose",
+          "options": {}
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "Others-Exclude-Top-Items-From-Overall-Summary": {
+                  "index": 0,
+                  "text": "Others"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 5,
+        "y": 19
+      },
+      "id": 8,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "itemName",
+              "text": "Resource Type",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": "Emissions",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "uql",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "uql": "parse-json\r\n| scope \"value\"\r\n| project \"Resource\"=\"itemName\", \"Val\"=tonumber(\"latestMonthEmissions\")\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.powerbi/capacities','PowerBI Embedded')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.powerbidedicated/capacities','PowerBI Dedicated')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.fabric/capacities','Fabric Capacity')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachinescalesets','VM Scale Set')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachines','Virtual Machine')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/disks','Disk')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/snapshots','Disk Snapshot')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerservice/managedclusters','AKS Cluster')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerinstance/containergroups','Container Instance')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerregistry/registries','Container Registry')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.app/containerapps','Container App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.batch/batchaccounts','Batch Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/serverfarms','App Service Plan')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/sites','Web App/Function')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/staticsites','Static Web App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.logic/workflows','Logic App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/servers/databases','SQL Database')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/servers','SQL Server')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/managedinstances','SQL Managed Instance')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.dbformysql/flexibleservers','MySQL Flexible')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.dbforpostgresql/flexibleservers','PostgreSQL Flexible')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.documentdb/databaseaccounts','Cosmos DB')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.cache/redis','Redis Cache')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.storage/storageaccounts','Storage Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.netapp/netappaccounts','NetApp Files')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/virtualnetworks','VNet')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/publicipaddresses','Public IP')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/networkinterfaces','NIC')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/loadbalancers','Load Balancer')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/applicationgateways','App Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/azurefirewalls','Firewall')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/frontdoors','Front Door')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/virtualnetworkgateways','VPN/ER Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/bastionhosts','Bastion')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/natgateways','NAT Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.databricks/workspaces','Databricks')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.datafactory/factories','Data Factory')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.synapse/workspaces','Synapse')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.kusto/clusters','Kusto')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.machinelearningservices/workspaces','ML Workspace')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.cognitiveservices/accounts','AI Service')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.search/searchservices','AI Search')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.streamanalytics/streamingjobs','Stream Analytics')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.keyvault/vaults','Key Vault')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.insights/components','App Insights')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.operationalinsights/workspaces','Log Analytics')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.servicebus/namespaces','Service Bus')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.eventhub/namespaces','Event Hub')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.devices/iothubs','IoT Hub')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.automation/automationaccounts','Automation')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.recoveryservices/vaults','Recovery Vault')\r\n| extend \"Resource\"=replace_string(\"Resource\",'Others-Exclude-Top-Items-From-Overall-Summary','Others')\r\n| summarize \"Total Emissions\"=sum(\"Val\") by \"Resource\"\r\n| order by \"Total Emissions\" desc",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsSummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${EndDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"ResourceType\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Top 5 by Service Type This Month (in kgCO2e)",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "Others-exclude-top-items-from-overall-summary": {
+                  "index": 0,
+                  "text": "Others"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 11,
+        "y": 19
+      },
+      "id": 7,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "itemName",
+              "text": "Location",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": "Emissions",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${EndDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"Location\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Emissions by Location This Month (in kgCO2e)",
+      "transformations": [
+        {
+          "id": "formatString",
+          "options": {
+            "outputFormat": "Title Case",
+            "stringField": "Location"
+          }
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Carbon intensity * 10^3",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Carbon Intensity"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 19
+      },
+      "hideTimeOverride": true,
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "carbonIntensity",
+              "text": " Carbon Intensity",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 1",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"MonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${__from:date:YYYY-MM-01}\",\r\n    \"end\": \"${__to:date:YYYY-MM-01}\"\r\n  }\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "timeFrom": "12M",
+      "timeShift": "2M",
+      "title": "Carbon Intensity",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Carbon Intensity",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": " Carbon Intensity"
+                }
+              },
+              "operator": "*",
+              "right": {
+                "fixed": "1000"
+              }
+            },
+            "cumulative": {
+              "field": " Carbon Intensity",
+              "reducer": "sum"
+            },
+            "mode": "binary",
+            "reduce": {
+              "include": [
+                " Carbon Intensity"
+              ],
+              "reducer": "sum"
+            },
+            "replaceFields": true,
+            "window": {
+              "reducer": "mean",
+              "windowAlignment": "trailing",
+              "windowSize": 0.1,
+              "windowSizeMode": "percentage"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "shades"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 5,
+        "y": 29
+      },
+      "id": 17,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "top",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "itemName",
+              "text": "Resource Type",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": "Emissions",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "uql",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "uql": "parse-json\r\n| scope \"value\"\r\n| project \"Resource\"=\"itemName\", \"Val\"=tonumber(\"latestMonthEmissions\")\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.powerbi/capacities','PowerBI Embedded')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.powerbidedicated/capacities','PowerBI Dedicated')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.fabric/capacities','Fabric Capacity')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachinescalesets','VM Scale Set')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachines','Virtual Machine')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/disks','Disk')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/snapshots','Disk Snapshot')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerservice/managedclusters','AKS Cluster')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerinstance/containergroups','Container Instance')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerregistry/registries','Container Registry')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.app/containerapps','Container App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.batch/batchaccounts','Batch Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/serverfarms','App Service Plan')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/sites','Web App/Function')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/staticsites','Static Web App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.logic/workflows','Logic App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/servers/databases','SQL Database')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/servers','SQL Server')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/managedinstances','SQL Managed Instance')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.dbformysql/flexibleservers','MySQL Flexible')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.dbforpostgresql/flexibleservers','PostgreSQL Flexible')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.documentdb/databaseaccounts','Cosmos DB')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.cache/redis','Redis Cache')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.storage/storageaccounts','Storage Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.netapp/netappaccounts','NetApp Files')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/virtualnetworks','VNet')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/publicipaddresses','Public IP')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/networkinterfaces','NIC')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/loadbalancers','Load Balancer')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/applicationgateways','App Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/azurefirewalls','Firewall')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/frontdoors','Front Door')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/virtualnetworkgateways','VPN/ER Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/bastionhosts','Bastion')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/natgateways','NAT Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.databricks/workspaces','Databricks')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.datafactory/factories','Data Factory')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.synapse/workspaces','Synapse')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.kusto/clusters','Kusto')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.machinelearningservices/workspaces','ML Workspace')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.cognitiveservices/accounts','AI Service')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.search/searchservices','AI Search')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.streamanalytics/streamingjobs','Stream Analytics')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.keyvault/vaults','Key Vault')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.insights/components','App Insights')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.operationalinsights/workspaces','Log Analytics')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.servicebus/namespaces','Service Bus')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.eventhub/namespaces','Event Hub')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.devices/iothubs','IoT Hub')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.automation/automationaccounts','Automation')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.recoveryservices/vaults','Recovery Vault')\r\n| extend \"Resource\"=replace_string(\"Resource\",'Others-Exclude-Top-Items-From-Overall-Summary','Others')\r\n| summarize \"Total Emissions\"=sum(\"Val\") by \"Resource\"\r\n| order by \"Total Emissions\" desc",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"ResourceType\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Top 5 by Service Type (in kgCO2e)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "shades"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 11,
+        "y": 29
+      },
+      "id": 19,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "top",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "itemName",
+              "text": "Resource Type",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": "Emissions",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "uql",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "uql": "parse-json\r\n| scope \"value\"\r\n| project \"Resource\"=\"itemName\", \"Val\"=tonumber(\"latestMonthEmissions\")\r\n| extend \"Resource\"=replace_string(\"Resource\",'For-Other-Item-Resource-Group','Others')\r\n| summarize \"Total Emissions\"=sum(\"Val\") by \"Resource\"\r\n| order by \"Total Emissions\" desc",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"ResourceGroup\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Top 5 by Resource Group (in kgCO2e)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "shades"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 29
+      },
+      "id": 18,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "top",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "itemName",
+              "text": "Resource Type",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": "Emissions",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "uql",
+          "refId": "A",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "uql": "parse-json\r\n| scope \"value\"\r\n| project \"Resource\"=\"itemName\", \"Val\"=tonumber(\"latestMonthEmissions\")\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachinescalesets','VM Scale Set')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachines','Virtual Machine')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/disks','Disk')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.storage/storageaccounts','Storage Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/serverfarms','App Service Plan')\r\n| extend \"Resource\"=replace_string(\"Resource\",'Others-Exclude-Top-Items-From-Overall-Summary','Others')\r\n| summarize \"Total Emissions\"=sum(\"Val\") by \"Resource\"\r\n| order by \"Total Emissions\" desc",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${StartDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"Resource\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Top 5 by Resource (in kgCO2e)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Carbon emissions (kgCO2)",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 80,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 14,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Others-exclude-top-items-from-overall-summary  "
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Others"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 39
+      },
+      "hideTimeOverride": true,
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "date",
+              "text": "Time",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "itemName",
+              "text": "",
+              "type": "string"
+            },
+            {
+              "selector": "latestMonthEmissions",
+              "text": " ",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "timeseries",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "backend",
+          "refId": "Scope 1",
+          "root_selector": "value",
+          "source": "url",
+          "type": "json",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${__from:date:YYYY-MM-01}\",\r\n    \"end\": \"${__to:date:YYYY-MM-01}\"\r\n  },\r\n  \"categoryType\": \"Location\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "timeFrom": "12M",
+      "timeShift": "2M",
+      "title": "Emissions by Location",
+      "transformations": [
+        {
+          "id": "formatString",
+          "options": {
+            "outputFormat": "Title Case",
+            "stringField": "itemName"
+          }
+        },
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "itemName"
+            ],
+            "keepFields": false,
+            "naming": {
+              "asLabels": false
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Carbon emissions (kgCO2)",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 80,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 14,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kgCO2e"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Others-Exclude-Top-Items-From-Overall-Summary  "
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Others"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 39
+      },
+      "hideTimeOverride": true,
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "method": "POST",
+          "parser": "uql",
+          "refId": "Scope 1",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "uql": "parse-json\r\n| scope \"value\"\r\n| project \"Time\"=todatetime(\"date\"), \"Resource\"=\"itemName\", \"Val\"=tonumber(\"latestMonthEmissions\")\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.powerbi/capacities','PowerBI Embedded')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.powerbidedicated/capacities','PowerBI Dedicated')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.fabric/capacities','Fabric Capacity')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachinescalesets','VM Scale Set')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/virtualmachines','Virtual Machine')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/disks','Disk')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.compute/snapshots','Disk Snapshot')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerservice/managedclusters','AKS Cluster')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerinstance/containergroups','Container Instance')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.containerregistry/registries','Container Registry')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.app/containerapps','Container App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.batch/batchaccounts','Batch Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/serverfarms','App Service Plan')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/sites','Web App/Function')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.web/staticsites','Static Web App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.logic/workflows','Logic App')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/servers/databases','SQL Database')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/servers','SQL Server')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.sql/managedinstances','SQL Managed Instance')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.dbformysql/flexibleservers','MySQL Flexible')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.dbforpostgresql/flexibleservers','PostgreSQL Flexible')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.documentdb/databaseaccounts','Cosmos DB')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.cache/redis','Redis Cache')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.storage/storageaccounts','Storage Account')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.netapp/netappaccounts','NetApp Files')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/virtualnetworks','VNet')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/publicipaddresses','Public IP')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/networkinterfaces','NIC')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/loadbalancers','Load Balancer')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/applicationgateways','App Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/azurefirewalls','Firewall')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/frontdoors','Front Door')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/virtualnetworkgateways','VPN/ER Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/bastionhosts','Bastion')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.network/natgateways','NAT Gateway')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.databricks/workspaces','Databricks')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.datafactory/factories','Data Factory')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.synapse/workspaces','Synapse')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.kusto/clusters','Kusto')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.machinelearningservices/workspaces','ML Workspace')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.cognitiveservices/accounts','AI Service')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.search/searchservices','AI Search')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.streamanalytics/streamingjobs','Stream Analytics')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.keyvault/vaults','Key Vault')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.insights/components','App Insights')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.operationalinsights/workspaces','Log Analytics')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.servicebus/namespaces','Service Bus')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.eventhub/namespaces','Event Hub')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.devices/iothubs','IoT Hub')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.automation/automationaccounts','Automation')\r\n| extend \"Resource\"=replace_string(\"Resource\",'microsoft.recoveryservices/vaults','Recovery Vault')\r\n| extend \"Resource\"=replace_string(\"Resource\",'Others-Exclude-Top-Items-From-Overall-Summary','Others')\r\n| summarize \"Value\"=sum(\"Val\") by \"Resource\", \"Time\"\r\n| order by \"Time\" asc",
+          "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+          "url_options": {
+            "body_content": "{\n  \"reportType\": \"MonthlySummaryReport\",\n  \"subscriptionList\": ${Subscriptions:json},\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\n  \"dateRange\": {\n    \"start\": \"${__from:date:YYYY-MM-DD}\",\n    \"end\": \"${__to:date:YYYY-MM-DD}\"\n  }\n}",
+            "body_content_type": "application/json",
+            "body_type": "raw",
+            "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": ${Scopes:json},\r\n  \"dateRange\": {\r\n    \"start\": \"${__from:date:YYYY-MM-01}\",\r\n    \"end\": \"${__to:date:YYYY-MM-01}\"\r\n  },\r\n  \"categoryType\": \"ResourceType\",\r\n  \"topItems\": 5\r\n}",
+            "method": "POST"
+          }
+        }
+      ],
+      "timeFrom": "12M",
+      "timeShift": "2M",
+      "title": "Emissions by resource type",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "Resource"
+            ],
+            "keepFields": false,
+            "naming": {
+              "asLabels": false
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 49
+      },
+      "id": 21,
+      "panels": [
+        {
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 13,
+            "x": 0,
+            "y": 50
+          },
+          "id": 22,
+          "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "# Azure Carbon Optimization Report\n<a href=\"https://learn.microsoft.com/en-us/azure/carbon-optimization/api-export-data\" target=\"_blank\">Azure Carbon API Documentation</a>\n\n**Panels will appear broken if the the Start Date and End Date are set outside of the available data range due to limitations of the Azure API.**\n",
+            "mode": "markdown"
+          },
+          "pluginVersion": "12.3.2",
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "footer": {
+                  "reducers": []
+                },
+                "hideFrom": {
+                  "viz": false
+                },
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "state"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 67
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "managedByTenants"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 147
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "authorizationSource"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 151
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "displayName"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 239
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 24,
+            "x": 0,
+            "y": 55
+          },
+          "id": 5,
+          "options": {
+            "cellHeight": "sm",
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "12.3.2",
+          "targets": [
+            {
+              "columns": [],
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${DataSource}"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "parser": "backend",
+              "refId": "A",
+              "root_selector": "value",
+              "source": "url",
+              "type": "json",
+              "uql": "parse-json\r\n| scope \"value\"\r\n| project \"label\"=displayName, \"value\"=subscriptionId",
+              "url": "https://management.azure.com/subscriptions?api-version=2020-01-01",
+              "url_options": {
+                "body_content_type": "text/plain",
+                "body_type": "raw",
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Carbon Report Subscription Details",
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DataSource}"
+          },
+          "description": "Lists subscriptions if subscription access is denied",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "footer": {
+                  "reducers": []
+                },
+                "hideFrom": {
+                  "viz": false
+                },
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 9,
+            "x": 0,
+            "y": 61
+          },
+          "id": 11,
+          "options": {
+            "cellHeight": "sm",
+            "showHeader": true
+          },
+          "pluginVersion": "12.3.2",
+          "targets": [
+            {
+              "columns": [],
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${DataSource}"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "parser": "backend",
+              "refId": "A",
+              "root_selector": "$exists(subscriptionAccessDecisionList) ? subscriptionAccessDecisionList : [{\"subscriptionId\": \"All Active\", \"accessDecision\": \"Allowed\", \"reason\": \"No issues detected\"}]",
+              "source": "url",
+              "type": "json",
+              "uql": "parse-json\r\n| scope \"value\"\r\n| project \"label\"=displayName, \"value\"=subscriptionId",
+              "url": "https://management.azure.com/providers/Microsoft.Carbon/carbonEmissionReports?api-version=2025-04-01",
+              "url_options": {
+                "body_content_type": "application/json",
+                "body_type": "raw",
+                "data": "{\r\n  \"reportType\": \"TopItemsMonthlySummaryReport\",\r\n  \"subscriptionList\": ${Subscriptions:json},\r\n  \"carbonScopeList\": [\"Scope1\", \"Scope2\", \"Scope3\"],\r\n  \"dateRange\": {\r\n    \"start\": \"${EndDate}\",\r\n    \"end\": \"${EndDate}\"\r\n  },\r\n  \"categoryType\": \"Location\",\r\n  \"topItems\": 2\r\n  \r\n}",
+                "method": "POST"
+              }
+            }
+          ],
+          "title": "Azurd Subscription Access",
+          "type": "table"
+        }
+      ],
+      "title": "Troubleshooting",
+      "type": "row"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "tags": [
+    "Azure",
+    "Sustainability"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allowCustomValue": false,
+        "current": {
+			"selected": true,
+			"text": "Infinity",
+			"value": "${DS_INFINITY}"
+        },
+        "includeAll": false,
+        "label": "☁️ Datasource",
+        "name": "DataSource",
+        "options": [],
+        "query": "yesoreyeram-infinity-datasource",
+        "refresh": 1,
+        "regex": "/.*Carbon.*/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DataSource}"
+        },
+        "definition": "subscriptions",
+        "includeAll": true,
+        "label": "🔑 Subscriptions",
+        "multi": true,
+        "name": "Subscriptions",
+        "options": [],
+        "query": {
+          "filters": [],
+          "format": "table",
+          "infinityQuery": {
+            "columns": [
+              {
+                "selector": "displayName",
+                "text": "label",
+                "type": "string"
+              },
+              {
+                "selector": "subscriptionId",
+                "text": "value",
+                "type": "string"
+              }
+            ],
+            "data": "values\nfoo\nbar\nbaz",
+            "filters": [],
+            "format": "table",
+            "parser": "backend",
+            "refId": "",
+            "root_selector": "value",
+            "source": "url",
+            "type": "json",
+            "uql": "parse-json\r\n| scope \"value\"\r\n| project \"label\"=displayName, \"value\"=subscriptionId",
+            "url": "https://management.azure.com/subscriptions?api-version=2020-01-01",
+            "url_options": {
+              "body_content_type": "text/plain",
+              "body_type": "raw",
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "method": "GET",
+          "parser": "backend",
+          "queryType": "infinity",
+          "refId": "variable",
+          "root_selector": "value",
+          "source": "url",
+          "url": "https://management.azure.com/subscriptions?api-version=2020-01-01"
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": [
+            "$__all"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "",
+        "includeAll": true,
+        "label": "🏭 Emission Scopes",
+        "multi": true,
+        "name": "Scopes",
+        "options": [
+          {
+            "selected": false,
+            "text": "Scope1",
+            "value": "Scope1"
+          },
+          {
+            "selected": false,
+            "text": "Scope2",
+            "value": "Scope2"
+          },
+          {
+            "selected": false,
+            "text": "Scope3",
+            "value": "Scope3"
+          }
+        ],
+        "query": "Scope1,Scope2,Scope3",
+        "type": "custom"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "2025-01-01",
+          "value": "2025-01-01"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DataSource}"
+        },
+        "definition": "",
+        "label": "📅 Start Date",
+        "name": "StartDate",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "data": "{\n  \"safe_day\": \"${__to:date:DD}\",\n  \"current_month\": \"${__to:date:YYYY-MM-01}\",\n  \"prev_month\": \"${__from:date:YYYY-MM-01}\"\n}",
+            "filters": [],
+            "format": "table",
+            "parser": "uql",
+            "refId": "",
+            "root_selector": "",
+            "source": "inline",
+            "type": "json",
+            "uql": "parse-json\r\n| jsonata \"($limit:=safe_day>='20'?current_month:prev_month; $years:=[2023..2026]; $months:=['01','02','03','04','05','06','07','08','09','10','11','12']; $all:=$years.($y:=$; $months.({'v':$y & '-' & $ & '-01'}))[v < $limit]; $all)\"\r\n| project \"value\"=\"v\"\r\n| order by \"value\" desc\r\n| limit 13\r\n| order by \"value\" asc",
+            "url": "",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "queryType": "infinity",
+          "refId": "variable"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 7,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "2025-12-01",
+          "value": "2025-12-01"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DataSource}"
+        },
+        "definition": "",
+        "label": "📅 End Date",
+        "name": "EndDate",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "data": "{\n  \"safe_day\": \"${__to:date:DD}\",\n  \"current_month\": \"${__to:date:YYYY-MM-01}\",\n  \"prev_month\": \"${__from:date:YYYY-MM-01}\"\n}",
+            "filters": [],
+            "format": "table",
+            "parser": "uql",
+            "refId": "",
+            "root_selector": "",
+            "source": "inline",
+            "type": "json",
+            "uql": "parse-json\r\n| jsonata \"($limit:=safe_day>='20'?current_month:prev_month; $years:=[2023..2026]; $months:=['01','02','03','04','05','06','07','08','09','10','11','12']; $all:=$years.($y:=$; $months.({'v':$y & '-' & $ & '-01'}))[v < $limit]; $all)\"\r\n| project \"value\"=\"v\"\r\n| order by \"value\" desc\r\n| limit 13\r\n| order by \"value\" asc",
+            "url": "",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "meta": {},
+          "queryType": "infinity",
+          "refId": "variable"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 8,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "timezone": "",
+  "title": "Azure Carbon Optimization Report",
+  "uid": "azure-carbon-ops",
+  "version": 85
+}
