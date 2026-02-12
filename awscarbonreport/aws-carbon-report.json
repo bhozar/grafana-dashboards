@@ -1,0 +1,1150 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_CARBONREPORT",
+      "label": "CarbonReport",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "grafana-athena-datasource",
+      "pluginName": "Amazon Athena"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "bargauge",
+      "name": "Bar gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.3.2"
+    },
+    {
+      "type": "datasource",
+      "id": "grafana-athena-datasource",
+      "name": "Amazon Athena",
+      "version": "3.1.8"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAGOCAMAAAAw8UL8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMTGKCBbOAAAAuGVYSWZJSSoACAAAAAUAGgEFAAEAAABKAAAAGwEFAAEAAABSAAAAKAEDAAEAAAACAAAAMQECABEAAABaAAAAaYcEAAEAAABsAAAAAAAAAEkZAQDoAwAASRkBAOgDAABQYWludC5ORVQgNS4xLjExAAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlgAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAADan8NUVWp1vwAAAFpQTFRFTGlx/+jK/////5kA/////5kA/////5kA/////////5kA/////5kA/////5kA/////////5kA/////5kA/////5kA/////////5kA/////5kA/////5kA////BJtAdAAAABx0Uk5TAAcUFiYpNj9EU1VibHSEh5qfrLe9zc7d4+vy98bvfFgAACEYSURBVHja7V3rlrK4EhUaEUQMIoKIvP9rDnb39NcXJXVLAK291pk158e0QHZ27apUktVKoVAoFAqFQqFQKBQKhQjCKE6zLM9zY0xhTJ5nWZamcRTop5nxoMVpboqyrpumbbu+a9umaeqqLEyWLGTkgijJhzdouv4RuqYqTZ4qE+dFvWHY6rYfRVMNPAzn+w5RZsq666HomjKf8+u8DqKsaMDD1rcDDWenHkGSl21PQV1kSsIpRy7FkO+fetQmmQsJw7SoexZqEysTpmFf2dGHratMHEz+BoZJvv/tBY+D8S3VuYM8c+Q1B7Oee/y5VRBn918xT8kBJCla9ri1ZTpdAIvyquvl0OTUVwmr0W9URNLsGxu5rkzEv/SoULUZidFZIzRuXZWHk7Cv7qXREalie5IuF7Ucpe09StkBiW3vh2d8aFrRkatSv7E4NPLs+3wTQiRO7H9WkIEhQDkqyeGIrFypsa9QdOIDJx9nRnxf1TsEnoIG8FflspwS8hJG8HsD5jqK70HeORm4zg8FI2HxvoMCGcEKCK2l3j+BDYbcWGSAn8P8mpj3u0dB52YwqXoPQNpqiAL2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\" height=\"150\"/>",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.3.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "description": "The methodology used to calculate your estimated emissions is based on the guiding principles on data sources and allocation methods outlined in the GHG Protocol and other relevant standards. For more information, see the methodology in [Understanding your Customer Carbon Footprint estimations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ccft-estimation.html?icmpid=docs_billing_hp-ccft-summary).\n\nThe emissions savings is the difference between the carbon footprint emissions calculated using the location-based method (LBM) and the market-based method (MBM). ",
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 3,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Carbon emissions summary Info\nProvides your total AWS carbon emissions and the estimated savings from using AWS. The savings represent the estimated carbon emission reduction due to AWS's carbon-free energy purchases. If your emissions are lower than your savings, it means AWS has purchased carbon-free energy that compensated all or part of the emissions associated with your usage.",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.3.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 5,
+        "w": 9,
+        "x": 15,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Data publishing time\nMonthly carbon estimates are now published by the 23rd of the month after the usage occurs. For example, November carbon estimates are published by December 23rd.",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.3.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 3,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "MTCO2e"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 13,
+        "x": 0,
+        "y": 5
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 1,
+          "rawSQL": "SELECT\r\n  SUM(total_lbm_emissions_value) AS \"Estimated LBM emissions\",\r\n  SUM(total_mbm_emissions_value) AS \"Estimated MBM emissions\",\r\n  SUM(total_lbm_emissions_value - total_mbm_emissions_value) AS \"Estimated emissions savings\"\r\nFROM \"carbonreportgrafana\".\"data\"\r\nWHERE $__timeFilter(usage_period_start)",
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dateTimeAsIso"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Days Since Refresh"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 15,
+        "y": 5
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/.*/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 1,
+          "rawSQL": "SELECT\r\n  MAX(CAST(last_refresh_timestamp AS TIMESTAMP)) AS \"Last Refresh Date\",\r\n  DATE_DIFF('day', MAX(CAST(last_refresh_timestamp AS TIMESTAMP)), CURRENT_TIMESTAMP) AS \"Days Since Refresh\"\r\nFROM \"carbonreportgrafana\".\"data\"\r\nWHERE $__timeFilter(usage_period_start)",
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Carbon emissions (MTC02e)",
+            "axisPlacement": "auto",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels[\"metric\"]}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 3,
+      "options": {
+        "barRadius": 0.2,
+        "barWidth": 0.83,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Total",
+          "sortDesc": true
+        },
+        "orientation": "auto",
+        "showValue": "never",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "column": "last_refresh_timestamp",
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 0,
+          "rawSQL": "WITH RegionalTotals AS (\r\n    SELECT\r\n        usage_period_start AS time,\r\n        location,\r\n        SUM(total_mbm_emissions_value) AS emissions\r\n    FROM \"carbonreportgrafana\".\"data\"\r\n    WHERE $__timeFilter(usage_period_start)\r\n    GROUP BY 1, 2\r\n),\r\nRankedRegions AS (\r\n    SELECT\r\n        time,\r\n        location,\r\n        emissions,\r\n        RANK() OVER (PARTITION BY time ORDER BY emissions DESC) as rnk\r\n    FROM RegionalTotals\r\n)\r\nSELECT\r\n    time,\r\n    CASE \r\n        WHEN rnk <= 5 THEN location \r\n        ELSE 'Other' \r\n    END AS metric,\r\n    SUM(emissions) AS \"Emissions (MTCO2e)\"\r\nFROM RankedRegions\r\nGROUP BY 1, 2\r\nORDER BY 1 ASC",
+          "refId": "A",
+          "table": "data"
+        }
+      ],
+      "title": "Monthly Emissions over time (MBM)",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Carbon emissions (MTC02e)",
+            "axisPlacement": "auto",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "${__field.labels[\"metric\"]}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 18,
+      "options": {
+        "barRadius": 0.2,
+        "barWidth": 0.83,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Total",
+          "sortDesc": true
+        },
+        "orientation": "auto",
+        "showValue": "never",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "column": "last_refresh_timestamp",
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 0,
+          "rawSQL": "WITH RegionalTotals AS (\r\n    SELECT\r\n        usage_period_start AS time,\r\n        location,\r\n        SUM(total_lbm_emissions_value) AS emissions\r\n    FROM \"carbonreportgrafana\".\"data\"\r\n    WHERE $__timeFilter(usage_period_start)\r\n    GROUP BY 1, 2\r\n),\r\nRankedRegions AS (\r\n    SELECT\r\n        time,\r\n        location,\r\n        emissions,\r\n        RANK() OVER (PARTITION BY time ORDER BY emissions DESC) as rnk\r\n    FROM RegionalTotals\r\n)\r\nSELECT\r\n    time,\r\n    CASE \r\n        WHEN rnk <= 5 THEN location \r\n        ELSE 'Other' \r\n    END AS metric,\r\n    SUM(emissions) AS \"Emissions (MTCO2e)\"\r\nFROM RankedRegions\r\nGROUP BY 1, 2\r\nORDER BY 1 ASC",
+          "refId": "A",
+          "table": "data"
+        }
+      ],
+      "title": "Monthly Emissions over time (LBM)",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "description": "The CCFT accounts for estimated emissions for the full range of AWS products. S3, EC2, and CloudFront emissions are broken down, while all other services are included in the 'Other' category.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 28
+      },
+      "id": 2,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "column": "last_refresh_timestamp",
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 1,
+          "rawSQL": "SELECT\r\n  product_code AS \"Service\",\r\n  SUM(total_mbm_emissions_value) AS \"MTCO2e\"\r\nFROM \"carbonreportgrafana\".\"data\"\r\nWHERE $__timeFilter(usage_period_start)\r\nGROUP BY 1\r\nORDER BY 2 DESC",
+          "refId": "A",
+          "table": "data"
+        }
+      ],
+      "title": "Emissions by Service (MBM)",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "description": "The CCFT accounts for estimated emissions for the full range of AWS products. S3, EC2, and CloudFront emissions are broken down, while all other services are included in the 'Other' category.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 7,
+        "y": 28
+      },
+      "id": 12,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "column": "last_refresh_timestamp",
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 1,
+          "rawSQL": "SELECT\r\n  product_code AS \"Service\",\r\n  SUM(total_lbm_emissions_value) AS \"MTCO2e\"\r\nFROM \"carbonreportgrafana\".\"data\"\r\nWHERE $__timeFilter(usage_period_start)\r\nGROUP BY 1\r\nORDER BY 2 DESC",
+          "refId": "A",
+          "table": "data"
+        }
+      ],
+      "title": "Emissions by Service (LBM)",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "description": "The CCFT accounts for estimated emissions for the full range of AWS products. S3, EC2, and CloudFront emissions are broken down, while all other services are included in the 'Other' category.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "right",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false,
+            "wrapHeaderText": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 28
+      },
+      "id": 13,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 1,
+          "rawSQL": "WITH ServiceTotals AS (\r\n    SELECT\r\n        product_code AS \"Service\",\r\n        SUM(total_mbm_emissions_value) AS mbm_val,\r\n        SUM(total_lbm_emissions_value) AS lbm_val\r\n    FROM \"carbonreportgrafana\".\"data\"\r\n    WHERE $__timeFilter(usage_period_start)\r\n    GROUP BY 1\r\n),\r\nGrandTotals AS (\r\n    SELECT\r\n        \"Service\",\r\n        mbm_val,\r\n        lbm_val,\r\n        -- Window function to get total across all rows\r\n        SUM(mbm_val) OVER () as total_mbm,\r\n        SUM(lbm_val) OVER () as total_lbm\r\n    FROM ServiceTotals\r\n)\r\nSELECT\r\n    \"Service\",\r\n    -- MBM Columns\r\n    ROUND(mbm_val, 3) AS \"MBM carbon emissions\",\r\n    CONCAT(CAST(ROUND((mbm_val / NULLIF(total_mbm, 0)) * 100, 1) AS VARCHAR), '%') AS \"% of total emissions (MBM)\",\r\n    -- LBM Columns\r\n    ROUND(lbm_val, 3) AS \"LBM carbon emissions\",\r\n    CONCAT(CAST(ROUND((lbm_val / NULLIF(total_lbm, 0)) * 100, 1) AS VARCHAR), '%') AS \"% of total emissions (LBM)\"\r\nFROM GrandTotals\r\nORDER BY mbm_val DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Emissions by Service",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*1.*/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*2.*/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#1ba081",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*3.*/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "id": 5,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "column": "last_refresh_timestamp",
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 0,
+          "rawSQL": "SELECT\r\n  SUM(total_scope_1_emissions_value) AS \"Scope 1 (Direct)\",\r\n  SUM(total_scope_2_mbm_emissions_value) AS \"Scope 2 (Electricity)\",\r\n  SUM(total_scope_3_mbm_emissions_value) AS \"Scope 3 (Supply Chain)\"\r\nFROM \"carbonreportgrafana\".\"data\"\r\nWHERE $__timeFilter(usage_period_start)",
+          "refId": "A",
+          "table": "data"
+        }
+      ],
+      "title": "Scope 1, 2, and 3 Comparison (MBM)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*1.*/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*2.*/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#1ba081",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*3.*/"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 19,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "column": "last_refresh_timestamp",
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 0,
+          "rawSQL": "SELECT\r\n  SUM(total_scope_1_emissions_value) AS \"Scope 1 (Direct)\",\r\n  SUM(total_scope_2_Lbm_emissions_value) AS \"Scope 2 (Electricity)\",\r\n  SUM(total_scope_3_Lbm_emissions_value) AS \"Scope 3 (Supply Chain)\"\r\nFROM \"carbonreportgrafana\".\"data\"\r\nWHERE $__timeFilter(usage_period_start)",
+          "refId": "A",
+          "table": "data"
+        }
+      ],
+      "title": "Scope 1, 2, and 3 Comparison (LBM)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-athena-datasource",
+        "uid": "${DS_CARBONREPORT}"
+      },
+      "description": "This table displays emissions by AWS Region. Emissions from Global Services, such as Amazon CloudFront, are reported under Global.\n\n* **LBM (Location-Based)**: Shows the \"physical\" reality of the local power grid where your servers are running.\n\n* **MBM (Market-Based)**: Shows your footprint after accounting for AWS's renewable energy purchases. Comparing these two in one table helps you see exactly where AWS’s green energy investments are having the most impact on your specific workload.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "right",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false,
+            "wrapHeaderText": true,
+            "wrapText": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
+      "id": 14,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": true,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "% of total emissions (MBM)"
+          }
+        ]
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "connectionArgs": {
+            "catalog": "__default",
+            "database": "__default",
+            "region": "__default",
+            "resultReuseEnabled": false,
+            "resultReuseMaxAgeInMinutes": 60
+          },
+          "datasource": {
+            "type": "grafana-athena-datasource",
+            "uid": "${DS_CARBONREPORT}"
+          },
+          "format": 1,
+          "rawSQL": "WITH RegionalTotals AS (\r\n    SELECT\r\n        location AS \"Region\",\r\n        SUM(total_mbm_emissions_value) AS mbm_val,\r\n        SUM(total_lbm_emissions_value) AS lbm_val\r\n    FROM \"carbonreportgrafana\".\"data\"\r\n    WHERE $__timeFilter(usage_period_start)\r\n    GROUP BY 1\r\n),\r\nGrandTotals AS (\r\n    SELECT\r\n        \"Region\",\r\n        mbm_val,\r\n        lbm_val,\r\n        -- Calculate total across all regions for percentage denominators\r\n        SUM(mbm_val) OVER () as total_mbm,\r\n        SUM(lbm_val) OVER () as total_lbm\r\n    FROM RegionalTotals\r\n)\r\nSELECT\r\n    \"Region\",\r\n    -- MBM Columns\r\n    ROUND(mbm_val, 3) AS \"MBM carbon emissions\",\r\n    CASE \r\n        WHEN total_mbm > 0 THEN CONCAT(CAST(ROUND((mbm_val / total_mbm) * 100, 1) AS VARCHAR), '%')\r\n        ELSE '0%' \r\n    END AS \"% of total emissions (MBM)\",\r\n    -- LBM Columns\r\n    ROUND(lbm_val, 3) AS \"LBM carbon emissions\",\r\n    CASE \r\n        WHEN total_lbm > 0 THEN CONCAT(CAST(ROUND((lbm_val / total_lbm) * 100, 1) AS VARCHAR), '%')\r\n        ELSE '0%' \r\n    END AS \"% of total emissions (LBM)\"\r\nFROM GrandTotals\r\nORDER BY mbm_val DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Emissions by AWS Region",
+      "type": "table"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 16,
+      "panels": [
+        {
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 26,
+            "w": 24,
+            "x": 0,
+            "y": 57
+          },
+          "id": 6,
+          "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "# AWS Table Data\n\n| Column name                       | Data type | Description                                                                                                                                                                                                                                                                                                                                                                                                |\n| --------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| last_refresh_timestamp            | Timestamp | The time when the carbon footprint value was last generated, in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.                                                                                                                                                                                                                                                                                                   |\n| location                          | String    | Describes the human-readable location where the usage originated from, corresponding to the region_code. For example, US East (N. Virginia). Emissions from Global Services, such as Amazon CloudFront, are reported under Global.                                                                                                                                                                         |\n| model_version                     | String    | The version of the methodology the carbon footprint data was calculated with. For example, v2.0.0.                                                                                                                                                                                                                                                                                                         |\n| payer_account_id                  | String    | The account ID of the paying account. For an organization in AWS Organizations, this is the account ID of the management account.                                                                                                                                                                                                                                                                          |\n| product_code                      | String    | The code of the product measured. For example, Amazon EC2 is the product code for Amazon Elastic Compute Cloud.                                                                                                                                                                                                                                                                                            |\n| region_code                       | String    | A Region is a physical location around the world where data centers are clustered. AWS calls each group of logical data centers an Availability Zone (AZ). Each AWS Region consists of multiple, isolated, and physically separate AZs within a geographical area. The Region code attribute has the same name as an AWS Region, and specifies where the AWS service is available. For example, us-east-1. |\n| total_lbm_emissions_unit          | String    | The unit of measure used for location-based method (LBM) emissions. The unit we currently support is metric tons of carbon dioxide-equivalent (MTCO2e).                                                                                                                                                                                                                                                    |\n| total_lbm_emissions_value         | Double    | The total estimated location-based method (LBM) emissions value associated with the account, including Scope 1, Scope 2, and Scope 3.                                                                                                                                                                                                                                                                      |\n| total_mbm_emissions_unit          | String    | The unit of measure used for market-based method (MBM) emissions. The unit we currently support is metric tons of carbon dioxide-equivalent (MTCO2e).                                                                                                                                                                                                                                                      |\n| total_mbm_emissions_value         | Double    | The total estimated market-based method (MBM) emissions value associated with the account, including Scope 1, Scope 2, and Scope 3.                                                                                                                                                                                                                                                                        |\n| total_scope_1_emissions_unit      | String    | The unit of measure used for Scope 1 emissions.                                                                                                                                                                                                                                                                                                                                                            |\n| total_scope_1_emissions_value     | Double    | The Scope 1 emissions value associated with the account.                                                                                                                                                                                                                                                                                                                                                   |\n| total_scope_2_lbm_emissions_unit  | String    | The unit of measure used for Scope 2 location-based method (LBM) emissions.                                                                                                                                                                                                                                                                                                                                |\n| total_scope_2_lbm_emissions_value | Double    | The Scope 2 location-based method (LBM) emissions value associated with the account.                                                                                                                                                                                                                                                                                                                       |\n| total_scope_2_mbm_emissions_unit  | String    | The unit of measure used for Scope 2 market-based method (MBM) emissions.                                                                                                                                                                                                                                                                                                                                  |\n| total_scope_2_mbm_emissions_value | Double    | The Scope 2 market-based method (MBM) emissions value associated with the account.                                                                                                                                                                                                                                                                                                                         |\n| total_scope_3_lbm_emissions_unit  | String    | The unit of measure used for Scope 3 location-based method (LBM) emissions.                                                                                                                                                                                                                                                                                                                                |\n| total_scope_3_lbm_emissions_value | Double    | The Scope 3 location-based method (LBM) emissions value associated with the account.                                                                                                                                                                                                                                                                                                                       |\n| total_scope_3_mbm_emissions_unit  | String    | The unit of measure used for Scope 3 market-based method (MBM) emissions.                                                                                                                                                                                                                                                                                                                                  |\n| total_scope_3_mbm_emissions_value | Double    | The Scope 3 market-based method (MBM) emissions value associated with the account.                                                                                                                                                                                                                                                                                                                         |\n| usage_account_id                  | String    | The account ID of the account associated with the carbon footprint value. For organizations, this can be either the management account or a member account.                                                                                                                                                                                                                                                |\n| usage_period_end                  | Timestamp | The end date of the period that is covered by this report, in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.                                                                                                                                                                                                                                                                                                     |\n| usage_period_start                | Timestamp | The start date of the period that is covered by this report, in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.                                                                                                                                                                                                                                                                                                   |",
+            "mode": "markdown"
+          },
+          "pluginVersion": "12.3.2",
+          "title": "",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "title": "AWS Table Data Info",
+      "type": "row"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": [
+    "AWS"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2025-01-01T00:00:00.000Z",
+    "to": "2025-12-31T23:59:59.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "AWS Carbon Report",
+  "uid": "al9vxhr",
+  "version": 30,
+  "weekStart": ""
+}
